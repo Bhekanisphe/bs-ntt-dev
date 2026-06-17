@@ -1,7 +1,7 @@
-resource "aws_connect_hours_of_operation" "BS-Test-HOO" {
+resource "aws_connect_hours_of_operation" "BM-Test-HOO" {
   instance_id = var.instance_id
-  name        = "BS-Test-HOO - IaC"
-  description = "Bs test flow office hours of operation"
+  name        = "BM-Test-HOO - IaC"
+  description = "BM test flow office hours of operation"
   time_zone   = "EST"
 
   dynamic "config" {
@@ -20,6 +20,6 @@ resource "aws_connect_hours_of_operation" "BS-Test-HOO" {
   }
 
   tags = {
-    "Name" = "BS Test flow Hours of Operation"
+    "Name" = "BM Test flow Hours of Operation"
   }
 }
