@@ -1,0 +1,1115 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "e98a9669-e34e-4462-baea-99ce39d0bdbf",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 40.8,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "e98a9669-e34e-4462-baea-99ce39d0bdbf": {
+        "position": {
+          "x": 16,
+          "y": 570.4
+        }
+      },
+      "2207d22f-8c11-44a0-b3f6-28fabc46212d": {
+        "position": {
+          "x": 505.6,
+          "y": 788.8
+        }
+      },
+      "86e8f977-5cfb-4c73-abd8-4728c87745ac": {
+        "position": {
+          "x": 2139.2,
+          "y": 842.4
+        }
+      },
+      "14ec0cd4-34c2-461c-b82b-373fac425a68": {
+        "position": {
+          "x": 1557.6,
+          "y": 1407.2
+        }
+      },
+      "15f337de-4321-4955-9558-311908768953": {
+        "position": {
+          "x": 504,
+          "y": 269.6
+        }
+      },
+      "49959f3f-6674-4e5b-9f89-dd8f763caa8a": {
+        "position": {
+          "x": 612.8,
+          "y": 473.6
+        }
+      },
+      "7aec0a20-6faa-419f-b13e-e0fe2954ca30": {
+        "position": {
+          "x": 1772.8,
+          "y": 955.2
+        }
+      },
+      "4e323884-f61c-40ea-9471-5d19425d8667": {
+        "position": {
+          "x": 1476,
+          "y": 960
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "BM-Test-General"
+          }
+        },
+        "queue": {
+          "text": "BM-Test-General"
+        }
+      },
+      "28322be4-e4bc-4e0a-a35f-d08ecfd235b3": {
+        "position": {
+          "x": 1827.2,
+          "y": 748
+        }
+      },
+      "d80eb5f1-2fdd-4db9-a375-8d3859ba6743": {
+        "position": {
+          "x": 1473.6,
+          "y": 746.4
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "BM-Test-Sales"
+          }
+        },
+        "queue": {
+          "text": "BM-Test-Sales"
+        }
+      },
+      "0ecd6ca5-2861-4c7d-abd6-9e78da43c667": {
+        "position": {
+          "x": 2928.8,
+          "y": 359.2
+        }
+      },
+      "ef341046-f1e9-45b6-9553-0cceb4497f0d": {
+        "position": {
+          "x": 2620.8,
+          "y": 637.6
+        }
+      },
+      "008a0280-65b5-4187-ac83-53152d4e6b46": {
+        "position": {
+          "x": 1641.6,
+          "y": 1230.4
+        }
+      },
+      "4d7c643e-7746-4209-9d1d-e2d51c3fe356": {
+        "position": {
+          "x": 2894.4,
+          "y": -20
+        }
+      },
+      "daf670f7-89d2-4d93-a9df-bc323a93c55d": {
+        "position": {
+          "x": 3389.6,
+          "y": -10.4
+        }
+      },
+      "b1e5c6ad-7196-497b-9f8d-27e904e8f80a": {
+        "position": {
+          "x": 3152,
+          "y": -7.2
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "BM-Test-General"
+          }
+        },
+        "queue": {
+          "text": "BM-Test-General"
+        }
+      },
+      "72b4743c-5019-49dd-ae64-520350247259": {
+        "position": {
+          "x": 771.2,
+          "y": 1289.6
+        }
+      },
+      "a2a86af0-c16c-4edd-92c6-53e5fa79e14d": {
+        "position": {
+          "x": 1305.6,
+          "y": 1324
+        }
+      },
+      "1e25d69d-45e7-42bc-b9b4-4f505b716ec0": {
+        "position": {
+          "x": 1007.2,
+          "y": 1308.8
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "BM-Test-General"
+          }
+        },
+        "queue": {
+          "text": "BM-Test-General"
+        }
+      },
+      "f841b702-eeeb-43ef-affd-48ac241f6cf8": {
+        "position": {
+          "x": 831.2,
+          "y": 320.8
+        }
+      },
+      "7faadd02-d62b-4d7a-953c-798f41fea66f": {
+        "position": {
+          "x": 2605.6,
+          "y": -140
+        }
+      },
+      "afce4737-d3f1-4c7a-904a-639641d4456c": {
+        "position": {
+          "x": 2608,
+          "y": 100.8
+        }
+      },
+      "7e727d40-da11-4426-9523-38bfeee3e740": {
+        "position": {
+          "x": 2888.8,
+          "y": 179.2
+        }
+      },
+      "cab7e3de-ec05-4c80-ad2b-aaf7d23a01bf": {
+        "position": {
+          "x": 2657.6,
+          "y": 362.4
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "BM-Test-Technical-Wifi"
+          }
+        },
+        "queue": {
+          "text": "BM-Test-Technical-Wifi"
+        }
+      },
+      "d59fc8b0-9fa9-4d74-b115-d0506f35f887": {
+        "position": {
+          "x": 2339.2,
+          "y": 625.6
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "BM-Test-Technical-Laptop"
+          }
+        },
+        "queue": {
+          "text": "BM-Test-Technical-Laptop"
+        }
+      },
+      "788ece4b-3758-457b-b0f9-85aa5af097d6": {
+        "position": {
+          "x": 2334.4,
+          "y": -252
+        }
+      },
+      "b7ac465e-da67-4af4-8ff2-86da0d77b45b": {
+        "position": {
+          "x": 680.8,
+          "y": 987.2
+        }
+      },
+      "f3f07c21-f62f-489e-ae4e-1ba2c9879430": {
+        "position": {
+          "x": 901.6,
+          "y": 1037.6
+        }
+      },
+      "54447009-feb9-480a-a166-409c2ccef897": {
+        "position": {
+          "x": 452.8,
+          "y": 584
+        }
+      },
+      "4603aead-9528-4f17-935a-b72a8e65efe8": {
+        "position": {
+          "x": 1176.8,
+          "y": 948.8
+        }
+      },
+      "92cbf408-fc7e-458a-bdff-db8ee08f934f": {
+        "position": {
+          "x": 1169.6,
+          "y": 734.4
+        }
+      },
+      "92dd9157-2cd3-49f1-a4af-db87aeeaddd9": {
+        "position": {
+          "x": 1158.4,
+          "y": 1195.2
+        }
+      },
+      "bbc03227-b4e9-4827-a40b-5dc2e057d953": {
+        "position": {
+          "x": 1090.4,
+          "y": 356
+        }
+      },
+      "577077dc-74fc-46e3-9648-062066aa139f": {
+        "position": {
+          "x": 2325.6,
+          "y": 66.4
+        },
+        "conditionMetadata": [
+          {
+            "id": "deb6e3f4-f550-4850-9c4f-26c44fcf7e31",
+            "value": "1"
+          },
+          {
+            "id": "a96ea415-f183-43e9-9e4d-fbef21f9c03c",
+            "value": "2"
+          },
+          {
+            "id": "37386d01-b564-4fbc-bc37-bf17b45c4595",
+            "value": "#"
+          },
+          {
+            "id": "c0ddfa48-6e2b-46c2-ac54-dea884cd4030",
+            "value": "*"
+          }
+        ]
+      },
+      "282120a1-ce17-42e9-9de5-6a9aa20cd0ec": {
+        "position": {
+          "x": 845.6,
+          "y": 593.6
+        },
+        "conditionMetadata": [
+          {
+            "id": "29f8fbae-8c6f-4fd1-841a-da664cdeddc8",
+            "value": "1"
+          },
+          {
+            "id": "a8715120-5521-49ce-bd2a-d2a4c2eff9a8",
+            "value": "2"
+          },
+          {
+            "id": "75004207-69a4-4ab4-91d2-b9be18f3acff",
+            "value": "3"
+          },
+          {
+            "id": "773ad4ca-659f-4d2d-b4f2-21ba3863df3e",
+            "value": "#"
+          }
+        ]
+      },
+      "715844c2-b5e6-4717-9008-4a5634c7872a": {
+        "position": {
+          "x": 21.6,
+          "y": 720
+        }
+      },
+      "ce0cb54c-3b01-48e2-869e-3989b9816026": {
+        "position": {
+          "x": 25.6,
+          "y": 1012
+        }
+      },
+      "9b86fdd9-55f5-4246-8ed2-c75ac5fc6933": {
+        "position": {
+          "x": 271.2,
+          "y": 326.4
+        },
+        "parameters": {
+          "HoursOfOperationId": {
+            "displayName": "BM-Test-HOO"
+          }
+        },
+        "Hours": {
+          "id": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/9c11d4a3-4dd7-4262-b64f-d7b2b0575664",
+          "text": "BM-Test-HOO"
+        }
+      },
+      "3e3f7e95-2403-4e2c-b257-214e4f3d6478": {
+        "position": {
+          "x": 239.2,
+          "y": 820.8
+        },
+        "parameters": {
+          "Name": {
+            "useDynamic": true
+          }
+        },
+        "dynamicParams": [
+          "contactName"
+        ]
+      }
+    },
+    "Annotations": [],
+    "name": "BM-Test-Flow",
+    "description": "Flow used for automated testing",
+    "type": "contactFlow",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "e98a9669-e34e-4462-baea-99ce39d0bdbf",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "715844c2-b5e6-4717-9008-4a5634c7872a"
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "2207d22f-8c11-44a0-b3f6-28fabc46212d",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {},
+      "Identifier": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {},
+      "Identifier": "14ec0cd4-34c2-461c-b82b-373fac425a68",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Hi, this office if currently out of hours please call again during office hours from 9 AM to 5 PM. Thank you."
+      },
+      "Identifier": "15f337de-4321-4955-9558-311908768953",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "49959f3f-6674-4e5b-9f89-dd8f763caa8a",
+        "Errors": [
+          {
+            "NextAction": "49959f3f-6674-4e5b-9f89-dd8f763caa8a",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "49959f3f-6674-4e5b-9f89-dd8f763caa8a",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {},
+      "Identifier": "7aec0a20-6faa-419f-b13e-e0fe2954ca30",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+        "Errors": [
+          {
+            "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/42814f8c-931b-485d-bc47-4f20debcbfab"
+      },
+      "Identifier": "4e323884-f61c-40ea-9471-5d19425d8667",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "7aec0a20-6faa-419f-b13e-e0fe2954ca30",
+        "Errors": [
+          {
+            "NextAction": "008a0280-65b5-4187-ac83-53152d4e6b46",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "28322be4-e4bc-4e0a-a35f-d08ecfd235b3",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+        "Errors": [
+          {
+            "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/fd49c6d9-497a-423b-a15b-b28e286dcd36"
+      },
+      "Identifier": "d80eb5f1-2fdd-4db9-a375-8d3859ba6743",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "28322be4-e4bc-4e0a-a35f-d08ecfd235b3",
+        "Errors": [
+          {
+            "NextAction": "008a0280-65b5-4187-ac83-53152d4e6b46",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "0ecd6ca5-2861-4c7d-abd6-9e78da43c667",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+        "Errors": [
+          {
+            "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "ef341046-f1e9-45b6-9553-0cceb4497f0d",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+        "Errors": [
+          {
+            "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "86e8f977-5cfb-4c73-abd8-4728c87745ac",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "008a0280-65b5-4187-ac83-53152d4e6b46",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "You have not selected a correct option, please wait while we tranfer you to an agent. Thank you "
+      },
+      "Identifier": "4d7c643e-7746-4209-9d1d-e2d51c3fe356",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "b1e5c6ad-7196-497b-9f8d-27e904e8f80a",
+        "Errors": [
+          {
+            "NextAction": "b1e5c6ad-7196-497b-9f8d-27e904e8f80a",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "daf670f7-89d2-4d93-a9df-bc323a93c55d",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+        "Errors": [
+          {
+            "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/42814f8c-931b-485d-bc47-4f20debcbfab"
+      },
+      "Identifier": "b1e5c6ad-7196-497b-9f8d-27e904e8f80a",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "daf670f7-89d2-4d93-a9df-bc323a93c55d",
+        "Errors": [
+          {
+            "NextAction": "daf670f7-89d2-4d93-a9df-bc323a93c55d",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "You have not selected a correct option, please wait while we tranfer you to an agent. Thank you "
+      },
+      "Identifier": "72b4743c-5019-49dd-ae64-520350247259",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "1e25d69d-45e7-42bc-b9b4-4f505b716ec0",
+        "Errors": [
+          {
+            "NextAction": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "a2a86af0-c16c-4edd-92c6-53e5fa79e14d",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "14ec0cd4-34c2-461c-b82b-373fac425a68",
+        "Errors": [
+          {
+            "NextAction": "14ec0cd4-34c2-461c-b82b-373fac425a68",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "14ec0cd4-34c2-461c-b82b-373fac425a68",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/42814f8c-931b-485d-bc47-4f20debcbfab"
+      },
+      "Identifier": "1e25d69d-45e7-42bc-b9b4-4f505b716ec0",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "a2a86af0-c16c-4edd-92c6-53e5fa79e14d",
+        "Errors": [
+          {
+            "NextAction": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "f841b702-eeeb-43ef-affd-48ac241f6cf8",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "You have not selected an option, please try again."
+      },
+      "Identifier": "7faadd02-d62b-4d7a-953c-798f41fea66f",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "577077dc-74fc-46e3-9648-062066aa139f",
+        "Errors": [
+          {
+            "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LoopCount": "2"
+      },
+      "Identifier": "afce4737-d3f1-4c7a-904a-639641d4456c",
+      "Type": "Loop",
+      "Transitions": {
+        "NextAction": "4d7c643e-7746-4209-9d1d-e2d51c3fe356",
+        "Conditions": [
+          {
+            "NextAction": "7faadd02-d62b-4d7a-953c-798f41fea66f",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "ContinueLooping"
+              ]
+            }
+          },
+          {
+            "NextAction": "4d7c643e-7746-4209-9d1d-e2d51c3fe356",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "DoneLooping"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "7e727d40-da11-4426-9523-38bfeee3e740",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/332ce5c5-c74e-44c8-9995-5d97b0adb207"
+      },
+      "Identifier": "cab7e3de-ec05-4c80-ad2b-aaf7d23a01bf",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "0ecd6ca5-2861-4c7d-abd6-9e78da43c667",
+        "Errors": [
+          {
+            "NextAction": "0ecd6ca5-2861-4c7d-abd6-9e78da43c667",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/ca34dc02-bedc-47da-a234-5a115b5fd61a"
+      },
+      "Identifier": "d59fc8b0-9fa9-4d74-b115-d0506f35f887",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "ef341046-f1e9-45b6-9553-0cceb4497f0d",
+        "Errors": [
+          {
+            "NextAction": "008a0280-65b5-4187-ac83-53152d4e6b46",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LoopCount": "3"
+      },
+      "Identifier": "788ece4b-3758-457b-b0f9-85aa5af097d6",
+      "Type": "Loop",
+      "Transitions": {
+        "NextAction": "577077dc-74fc-46e3-9648-062066aa139f",
+        "Conditions": [
+          {
+            "NextAction": "577077dc-74fc-46e3-9648-062066aa139f",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "ContinueLooping"
+              ]
+            }
+          },
+          {
+            "NextAction": "577077dc-74fc-46e3-9648-062066aa139f",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "DoneLooping"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "577077dc-74fc-46e3-9648-062066aa139f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LoopCount": "2"
+      },
+      "Identifier": "b7ac465e-da67-4af4-8ff2-86da0d77b45b",
+      "Type": "Loop",
+      "Transitions": {
+        "NextAction": "72b4743c-5019-49dd-ae64-520350247259",
+        "Conditions": [
+          {
+            "NextAction": "f3f07c21-f62f-489e-ae4e-1ba2c9879430",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "ContinueLooping"
+              ]
+            }
+          },
+          {
+            "NextAction": "72b4743c-5019-49dd-ae64-520350247259",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "DoneLooping"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "You have not selected any option. Please try again."
+      },
+      "Identifier": "f3f07c21-f62f-489e-ae4e-1ba2c9879430",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
+        "Errors": [
+          {
+            "NextAction": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "Welcome to the test flow."
+      },
+      "Identifier": "54447009-feb9-480a-a166-409c2ccef897",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
+        "Errors": [
+          {
+            "NextAction": "2207d22f-8c11-44a0-b3f6-28fabc46212d",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "We are now transferring you to the general queries team. Please hold"
+      },
+      "Identifier": "4603aead-9528-4f17-935a-b72a8e65efe8",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "4e323884-f61c-40ea-9471-5d19425d8667",
+        "Errors": [
+          {
+            "NextAction": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SkipWhenDTMFBufferEnabled": "false",
+        "Text": "We are now transferring you to the sales team, please hold."
+      },
+      "Identifier": "92cbf408-fc7e-458a-bdff-db8ee08f934f",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "d80eb5f1-2fdd-4db9-a375-8d3859ba6743",
+        "Errors": [
+          {
+            "NextAction": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "LoopCount": "2"
+      },
+      "Identifier": "bbc03227-b4e9-4827-a40b-5dc2e057d953",
+      "Type": "Loop",
+      "Transitions": {
+        "NextAction": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
+        "Conditions": [
+          {
+            "NextAction": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "ContinueLooping"
+              ]
+            }
+          },
+          {
+            "NextAction": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "DoneLooping"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "f841b702-eeeb-43ef-affd-48ac241f6cf8",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "StoreInput": "False",
+        "InputTimeLimitSeconds": "5",
+        "Text": "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu."
+      },
+      "Identifier": "577077dc-74fc-46e3-9648-062066aa139f",
+      "Type": "GetParticipantInput",
+      "Transitions": {
+        "NextAction": "afce4737-d3f1-4c7a-904a-639641d4456c",
+        "Conditions": [
+          {
+            "NextAction": "cab7e3de-ec05-4c80-ad2b-aaf7d23a01bf",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          },
+          {
+            "NextAction": "d59fc8b0-9fa9-4d74-b115-d0506f35f887",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "2"
+              ]
+            }
+          },
+          {
+            "NextAction": "788ece4b-3758-457b-b0f9-85aa5af097d6",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "#"
+              ]
+            }
+          },
+          {
+            "NextAction": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "afce4737-d3f1-4c7a-904a-639641d4456c",
+            "ErrorType": "InputTimeLimitExceeded"
+          },
+          {
+            "NextAction": "afce4737-d3f1-4c7a-904a-639641d4456c",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "7e727d40-da11-4426-9523-38bfeee3e740",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "StoreInput": "False",
+        "InputTimeLimitSeconds": "5",
+        "Text": "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options"
+      },
+      "Identifier": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
+      "Type": "GetParticipantInput",
+      "Transitions": {
+        "NextAction": "b7ac465e-da67-4af4-8ff2-86da0d77b45b",
+        "Conditions": [
+          {
+            "NextAction": "577077dc-74fc-46e3-9648-062066aa139f",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          },
+          {
+            "NextAction": "92cbf408-fc7e-458a-bdff-db8ee08f934f",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "2"
+              ]
+            }
+          },
+          {
+            "NextAction": "4603aead-9528-4f17-935a-b72a8e65efe8",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "3"
+              ]
+            }
+          },
+          {
+            "NextAction": "bbc03227-b4e9-4827-a40b-5dc2e057d953",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "#"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "b7ac465e-da67-4af4-8ff2-86da0d77b45b",
+            "ErrorType": "InputTimeLimitExceeded"
+          },
+          {
+            "NextAction": "b7ac465e-da67-4af4-8ff2-86da0d77b45b",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "92dd9157-2cd3-49f1-a4af-db87aeeaddd9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "VoiceBehavior": {
+          "VoiceRecordingBehavior": {
+            "RecordedParticipants": [
+              "Agent",
+              "Customer"
+            ],
+            "IVRRecordingBehavior": "Disabled"
+          },
+          "VoiceAnalyticsBehavior": {
+            "Enabled": "False"
+          }
+        }
+      },
+      "Identifier": "715844c2-b5e6-4717-9008-4a5634c7872a",
+      "Type": "UpdateContactRecordingAndAnalyticsBehavior",
+      "Transitions": {
+        "NextAction": "3e3f7e95-2403-4e2c-b257-214e4f3d6478",
+        "Errors": [
+          {
+            "NextAction": "ce0cb54c-3b01-48e2-869e-3989b9816026",
+            "ErrorType": "NoMatchingError"
+          },
+          {
+            "NextAction": "ce0cb54c-3b01-48e2-869e-3989b9816026",
+            "ErrorType": "ChannelMismatch"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "ce0cb54c-3b01-48e2-869e-3989b9816026",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "HoursOfOperationId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/9c11d4a3-4dd7-4262-b64f-d7b2b0575664"
+      },
+      "Identifier": "9b86fdd9-55f5-4246-8ed2-c75ac5fc6933",
+      "Type": "CheckHoursOfOperation",
+      "Transitions": {
+        "NextAction": "49959f3f-6674-4e5b-9f89-dd8f763caa8a",
+        "Conditions": [
+          {
+            "NextAction": "54447009-feb9-480a-a166-409c2ccef897",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "True"
+              ]
+            }
+          },
+          {
+            "NextAction": "15f337de-4321-4955-9558-311908768953",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "False"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "49959f3f-6674-4e5b-9f89-dd8f763caa8a",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "TargetContact": "Current",
+        "Name": "$.Customer.PhoneNumber"
+      },
+      "Identifier": "3e3f7e95-2403-4e2c-b257-214e4f3d6478",
+      "Type": "UpdateContactData",
+      "Transitions": {
+        "NextAction": "9b86fdd9-55f5-4246-8ed2-c75ac5fc6933",
+        "Errors": [
+          {
+            "NextAction": "ce0cb54c-3b01-48e2-869e-3989b9816026",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}
