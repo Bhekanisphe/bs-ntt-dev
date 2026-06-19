@@ -320,12 +320,12 @@
         },
         "parameters": {
           "HoursOfOperationId": {
-            "displayName": "BM-Test-HOO"
+            "displayName": "BM-Test-HOO - IaC"
           }
         },
         "Hours": {
-          "id": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/9c11d4a3-4dd7-4262-b64f-d7b2b0575664",
-          "text": "BM-Test-HOO"
+          "id": "4605e369-8882-44d8-a3e9-069bb7fb7120",
+          "text": "BM-Test-HOO - IaC"
         }
       },
       "3e3f7e95-2403-4e2c-b257-214e4f3d6478": {
@@ -1060,7 +1060,7 @@
     },
     {
       "Parameters": {
-        "HoursOfOperationId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/9c11d4a3-4dd7-4262-b64f-d7b2b0575664"
+        "HoursOfOperationId": "4605e369-8882-44d8-a3e9-069bb7fb7120"
       },
       "Identifier": "9b86fdd9-55f5-4246-8ed2-c75ac5fc6933",
       "Type": "CheckHoursOfOperation",

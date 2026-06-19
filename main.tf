@@ -1,4 +1,4 @@
-resource "aws_connect_contact_flow" "BM-Test-Flow" {
+resource "aws_connect_contact_flow" "BM-Test-Flow-IaC" {
   instance_id  = var.instance_id
   name         = "BM-Test-IaC-Flow"
   description  = "Test Contact Flow made by IaC with file upload"
