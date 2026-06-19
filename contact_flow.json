@@ -56,11 +56,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-General"
+            "displayName": "BM-Test-General-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-General"
+          "text": "BM-Test-General-IaC"
         }
       },
       "28322be4-e4bc-4e0a-a35f-d08ecfd235b3": {
@@ -76,11 +76,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-Sales"
+            "displayName": "BM-Test-Sales-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-Sales"
+          "text": "BM-Test-Sales-IaC"
         }
       },
       "0ecd6ca5-2861-4c7d-abd6-9e78da43c667": {
@@ -120,11 +120,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-General"
+            "displayName": "BM-Test-General-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-General"
+          "text": "BM-Test-General-IaC"
         }
       },
       "72b4743c-5019-49dd-ae64-520350247259": {
@@ -146,11 +146,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-General"
+            "displayName": "BM-Test-General-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-General"
+          "text": "BM-Test-General-IaC"
         }
       },
       "f841b702-eeeb-43ef-affd-48ac241f6cf8": {
@@ -184,11 +184,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-Technical-Wifi"
+            "displayName": "BM-Test-Technical-Wifi-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-Technical-Wifi"
+          "text": "BM-Test-Technical-Wifi-IaC"
         }
       },
       "d59fc8b0-9fa9-4d74-b115-d0506f35f887": {
@@ -198,11 +198,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-Technical-Laptop"
+            "displayName": "BM-Test-Technical-Wifi-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-Technical-Laptop"
+          "text": "BM-Test-Technical-Wifi-IaC"
         }
       },
       "788ece4b-3758-457b-b0f9-85aa5af097d6": {
@@ -320,12 +320,12 @@
         },
         "parameters": {
           "HoursOfOperationId": {
-            "displayName": "BM-Test-HOO"
+            "displayName": "BM-Test-HOO - IaC"
           }
         },
         "Hours": {
-          "id": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/9c11d4a3-4dd7-4262-b64f-d7b2b0575664",
-          "text": "BM-Test-HOO"
+          "id": "4605e369-8882-44d8-a3e9-069bb7fb7120",
+          "text": "BM-Test-HOO - IaC"
         }
       },
       "3e3f7e95-2403-4e2c-b257-214e4f3d6478": {
@@ -1060,7 +1060,7 @@
     },
     {
       "Parameters": {
-        "HoursOfOperationId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/9c11d4a3-4dd7-4262-b64f-d7b2b0575664"
+        "HoursOfOperationId": "4605e369-8882-44d8-a3e9-069bb7fb7120"
       },
       "Identifier": "9b86fdd9-55f5-4246-8ed2-c75ac5fc6933",
       "Type": "CheckHoursOfOperation",
