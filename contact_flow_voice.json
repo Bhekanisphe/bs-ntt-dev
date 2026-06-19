@@ -13,7 +13,7 @@
           "HoursOfOperationId": { "displayName": "BM-Test-HOO - IaC" }
         },
         "Hours": {
-          "id": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/4605e369-8882-44d8-a3e9-069bb7fb7120",
+          "id": "4605e369-8882-44d8-a3e9-069bb7fb7120",
           "text": "BM-Test-HOO - IaC"
         }
       },
@@ -170,7 +170,7 @@
     },
     {
       "Parameters": {
-        "HoursOfOperationId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/operating-hours/4605e369-8882-44d8-a3e9-069bb7fb7120"
+        "HoursOfOperationId": "4605e369-8882-44d8-a3e9-069bb7fb7120"
       },
       "Identifier": "3ecd3272-e51f-4e2e-a210-b4a4c8939281",
       "Type": "CheckHoursOfOperation",
@@ -202,7 +202,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/a3ddb3e2-2b7d-4561-9336-749cfa14f910"
+        "QueueId": "a3ddb3e2-2b7d-4561-9336-749cfa14f910"
       },
       "Identifier": "e36133de-bbf8-48c3-8ee0-5ed9f71174e1",
       "Type": "UpdateContactTargetQueue",
@@ -218,7 +218,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/73e9d156-a62d-4471-9cbb-af126df78a1d"
+        "QueueId": "73e9d156-a62d-4471-9cbb-af126df78a1d"
       },
       "Identifier": "3d5df375-c4cd-4b95-91f0-81b594d89dc4",
       "Type": "UpdateContactTargetQueue",
