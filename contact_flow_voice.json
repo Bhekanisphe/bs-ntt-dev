@@ -371,7 +371,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/14b354a2-c688-4e1f-9ba6-e90089a615cc"
+        "QueueId": "14b354a2-c688-4e1f-9ba6-e90089a615cc"
       },
       "Identifier": "f8f3899c-f96e-4f5e-a910-f80f1b0224d9",
       "Type": "UpdateContactTargetQueue",
@@ -387,7 +387,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/6b1b6ba4-22cb-4ace-a1ec-77cbde8fd152"
+        "QueueId": "6b1b6ba4-22cb-4ace-a1ec-77cbde8fd152"
       },
       "Identifier": "54d06529-5512-4885-b1fe-f64244baebae",
       "Type": "UpdateContactTargetQueue",
