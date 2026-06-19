@@ -56,11 +56,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-General"
+            "displayName": "BM-Test-General-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-General"
+          "text": "BM-Test-General-IaC"
         }
       },
       "28322be4-e4bc-4e0a-a35f-d08ecfd235b3": {
@@ -76,11 +76,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-Sales"
+            "displayName": "BM-Test-Sales-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-Sales"
+          "text": "BM-Test-Sales-IaC"
         }
       },
       "0ecd6ca5-2861-4c7d-abd6-9e78da43c667": {
@@ -120,11 +120,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-General"
+            "displayName": "BM-Test-General-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-General"
+          "text": "BM-Test-General-IaC"
         }
       },
       "72b4743c-5019-49dd-ae64-520350247259": {
@@ -146,11 +146,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-General"
+            "displayName": "BM-Test-General-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-General"
+          "text": "BM-Test-General-IaC"
         }
       },
       "f841b702-eeeb-43ef-affd-48ac241f6cf8": {
@@ -184,11 +184,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-Technical-Wifi"
+            "displayName": "BM-Test-Technical-Wifi-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-Technical-Wifi"
+          "text": "BM-Test-Technical-Wifi-IaC"
         }
       },
       "d59fc8b0-9fa9-4d74-b115-d0506f35f887": {
@@ -198,11 +198,11 @@
         },
         "parameters": {
           "QueueId": {
-            "displayName": "BM-Test-Technical-Laptop"
+            "displayName": "BM-Test-Technical-Wifi-IaC"
           }
         },
         "queue": {
-          "text": "BM-Test-Technical-Laptop"
+          "text": "BM-Test-Technical-Wifi-IaC"
         }
       },
       "788ece4b-3758-457b-b0f9-85aa5af097d6": {
