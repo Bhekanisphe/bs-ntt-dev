@@ -262,7 +262,10 @@
       "Parameters": {
         "Text": "Welcome to the technical menu. Please specify if you have wifi issues or laptop issues. Please say this in a clear voice",
         "LexV2Bot": {
-          "AliasArn": "arn:aws:lex:af-south-1:687244881512:bot-alias/HMMAXX5G6E/TSTALIASID"
+          "AliasArn": {
+            "displayName": "TestBotAlias",
+            "lexV2BotName": "bs-automated-testing"
+          }
         }
       },
       "Identifier": "492ba086-cbf7-40fe-98c6-001d6ec46913",
@@ -318,7 +321,10 @@
       "Parameters": {
         "Text": "Please let us know the purpose of your call. You can do this by saying what you need assistance with in a clear voice.",
         "LexV2Bot": {
-          "AliasArn": "arn:aws:lex:af-south-1:687244881512:bot-alias/HMMAXX5G6E/TSTALIASID"
+          "AliasArn": {
+            "displayName": "TestBotAlias",
+            "lexV2BotName": "bs-automated-testing"
+          }
         }
       },
       "Identifier": "28134773-14de-404c-98b3-bd43ab4e921e",
