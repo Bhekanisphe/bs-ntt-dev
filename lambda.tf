@@ -33,7 +33,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
           "dynamodb:DescribeStream",
           "dynamodb:ListStreams"
         ]
-        Resource = aws_dynamodb_table.BS_Automated-Testing.stream_arn
+        Resource = aws_dynamodb_table.BS-Automated-Testing-Table.stream_arn
       },
       {
         Effect = "Allow"
@@ -73,7 +73,7 @@ resource "aws_lambda_function" "bs-automated-testing" {
 }
 
 resource "aws_lambda_event_source_mapping" "lambda_dynamodb_trigger" {
-  event_source_arn  = aws_dynamodb_table.BS_Automated-Testing.stream_arn
+  event_source_arn  = aws_dynamodb_table.BS-Automated-Testing-Table.stream_arn
   function_name     = aws_lambda_function.bs-automated-testing.arn
   starting_position = "LATEST"
 
