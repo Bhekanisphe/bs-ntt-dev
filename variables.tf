@@ -39,7 +39,8 @@ variable "test_cases" {
         message = string
         user_action = string
         next = string
-    }))}
+    }))
+    }))
     
     description = "List of test cases for the DynamoDB table"
     default = {
