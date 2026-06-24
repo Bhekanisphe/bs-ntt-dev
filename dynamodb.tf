@@ -32,7 +32,7 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "queue_id"                 = { "S" = each.value.queue_id },
         "type"                     = { "S" = each.value.type },
         "welcome_text"             = { "S" = each.value.welcome_text },
-        "menu_levels"              = { "L" = each.value.menu_levels }
+        "menu_levels"              = { "M" = each.value.menu_levels }
     })
 
 }
