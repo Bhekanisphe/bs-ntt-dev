@@ -4,7 +4,7 @@ import uuid
 
 instance_id = '6e669f6f-3783-4c0e-ac76-4f531575015d'
 connect = boto3.client('connect')
-table_name = 'bs-automated-testing'
+table_name = 'bs-automated-testing-iac'
 key_name = 'flow_name-testing_option'
 pk_value = ''
 
