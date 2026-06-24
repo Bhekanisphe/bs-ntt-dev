@@ -23,7 +23,7 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
     hash_key   = var.hash_key
 
     item = jsonencode({
-        "flow_name-testing_option" = { "S" = each.value["flow_name-testing_option"] },
+        "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
         "caller_number"            = { "S" = each.value.caller_number },
         "description"              = { "S" = each.value.description },
         "flow_id"                  = { "S" = each.value.flow_id },
