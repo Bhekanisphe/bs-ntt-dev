@@ -20,8 +20,8 @@ resource "aws_iam_role" "lambda_role" {
 # Package the Lambda function code
 data "archive_file" "lambda_file" {
   type        = "zip"
-  source_file = "${path.module}/lambda_functions/auto_test_lambda.py"
-  output_path = "${path.module}/lambda_functions/function.zip"
+  source_file = "${path.module}/../lambda_functions/auto_test_lambda.py"
+  output_path = "${path.module}/../lambda_functions/function.zip"
 }
 
 # Lambda function
