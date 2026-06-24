@@ -32,12 +32,7 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "queue_id"                 = { "S" = each.value.queue_id },
         "type"                     = { "S" = each.value.type },
         "welcome_text"             = { "S" = each.value.welcome_text },
-        "menu_levels"              = { "M" = {
-            identifier = { "S" = each.value.menu_levels.identifier },
-            message    = { "S" = each.value.menu_levels.message },
-            user_action = { "S" = each.value.menu_levels.user_action },
-            next       = { "S" = each.value.menu_levels.next }
-        } }
+        "menu_levels"              = { "S" = jsonencode(each.value.menu_levels) }
     })
 
 }
