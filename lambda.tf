@@ -17,6 +17,37 @@ resource "aws_iam_role" "lambda_role" {
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
 }
 
+# Permissions Lambda needs to read DynamoDB stream + write logs
+resource "aws_iam_role_policy" "lambda_policy" {
+  name = "lambda_dynamodb_policy"
+  role = aws_iam_role.lambda_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "dynamodb:GetRecords",
+          "dynamodb:GetShardIterator",
+          "dynamodb:DescribeStream",
+          "dynamodb:ListStreams"
+        ]
+        Resource = aws_dynamodb_table.BS_Automated-Testing.stream_arn
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = "arn:aws:logs:*:*:*"
+      }
+    ]
+  })
+}
+
 # Package the Lambda function code
 data "archive_file" "lambda_file" {
   type        = "zip"
@@ -38,5 +69,15 @@ resource "aws_lambda_function" "bs-automated-testing" {
   tags = {
     Environment = "development"
     Application = "terraform"
+  }
+}
+
+resource "aws_lambda_event_source_mapping" "lambda_dynamodb_trigger" {
+  event_source_arn  = aws_dynamodb_table.BS_Automated-Testing.stream_arn
+  function_name     = aws_lambda_function.bs-automated-testing.arn
+  starting_position = "LATEST"
+
+  tags = {
+    Name = "dynamodb-stream-mapping"
   }
 }

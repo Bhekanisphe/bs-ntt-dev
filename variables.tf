@@ -10,3 +10,22 @@ variable "days_of_week" {
     description = "List of days of the week for hoo"
     default = ["MONDAY","TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"]
 }
+
+variable "attributes" {
+  type = list(object({
+    name = string
+    type = string # Supported types for index keys are S (String), N (Number), or B (Binary)
+  }))
+  default = [
+    { name = "flow-name:testing-option", type = "S" },
+    { name = "caller_number", type = "S" },
+    { name = "description", type = "S" },
+    { name = "flow_id", type = "S" },
+    { name = "hho_id", type = "S" },
+    { name = "hoo_result", type = "S" },
+    { name = "queue_id", type = "S" },
+    { name = "type", type = "S" },
+    { name = "welcome_text", type = "S" },
+    { name = "menu_levels", type = "M" }
+  ]
+}
