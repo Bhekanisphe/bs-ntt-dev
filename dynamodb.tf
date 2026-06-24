@@ -3,11 +3,11 @@ resource "aws_dynamodb_table" "BS-Automated-Testing-Table" {
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "flow-name:testing-option"
 
-  dynamic "config" {
+  dynamic "attribute" {
     for_each = var.attributes
     attribute {
-      name = config.value.name
-      type = config.value.type
+      name = attribute.value.name
+      type = attribute.value.type
     }
 
   # Enable stream — sends change events to Lambda
