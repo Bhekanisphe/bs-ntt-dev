@@ -52,4 +52,3 @@ resource "aws_dynamodb_table" "BS-Automated-Testing-Table" {
     Application = "terraform"
   }
 }
-}
