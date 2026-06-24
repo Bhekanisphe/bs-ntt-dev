@@ -19,7 +19,7 @@ resource "aws_dynamodb_table" "BS-Automated-Testing-Table" {
 
 resource "aws_dynamodb_table_item" "Test-Case-Items" {
     for_each = var.test_cases
-    table_name = var.table_name
+    table_name = aws_dynamodb_table.BS-Automated-Testing-Table.name
     hash_key   = var.hash_key
 
     item = jsonencode({
