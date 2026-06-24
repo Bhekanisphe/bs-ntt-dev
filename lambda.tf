@@ -54,6 +54,7 @@ resource "aws_lambda_function" "bs-automated-testing" {
   source_code_hash = filebase64sha256(data.archive_file.lambda_file.output_path)
 
   runtime = "python3.13"
+  timeout = 300
 
   tags = {
     Environment = "development"
