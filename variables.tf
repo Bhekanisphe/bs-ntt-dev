@@ -49,10 +49,10 @@ variable "test_cases" {
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC",
-            flow_id = aws_connect_contact_flow.BM-Test-Flow-IaC.id,
-            hho_id = aws_connect_hours_of_operation.BM-Test-Hours-of-Operation.id,
+            flow_id = ${aws_connect_contact_flow.BM-Test-Flow-IaC.id},
+            hho_id = ${aws_connect_hours_of_operation.BM-Test-Hours-of-Operation.id},
             hoo_result = "InHour",
-            queue_id = aws_connect_queue.BM-Test-General.id,
+            queue_id = ${aws_connect_queue.BM-Test-General.id},
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
@@ -74,10 +74,10 @@ variable "test_cases" {
             welcome_text = "Welcome to the voice test flow",
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-Voice-IaC",
-            flow_id = aws_connect_contact_flow.BM-Test-Flow-Voice-IaC.id,
-            hho_id = aws_connect_hours_of_operation.BM-Test-Hours-of-Operation.id,
+            flow_id = ${aws_connect_contact_flow.BM-Test-Flow-Voice-IaC.id},
+            hho_id = ${aws_connect_hours_of_operation.BM-Test-Hours-of-Operation.id},
             hoo_result = "InHour",
-            queue_id = aws_connect_queue.BM-Test-General.id,
+            queue_id = ${aws_connect_queue.BM-Test-General.id},
             type = "Utterance",
             menu_levels = {
                 "1" = {
