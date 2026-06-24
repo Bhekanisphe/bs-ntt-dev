@@ -29,7 +29,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
         sid       = "DynamoDBFullAccess"
         actions   = ["dynamodb:*"]
         resources = [
-        aws_dynamodb_table.my_table.arn,
+        aws_dynamodb_table.BS-Automated-Testing-Table.arn,
         "${aws_dynamodb_table.BS-Automated-Testing-Table.arn}/*"
         ]
       },
