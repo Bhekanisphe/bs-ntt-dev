@@ -49,10 +49,10 @@ variable "test_cases" {
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC",
-            flow_id = ${aws_connect_contact_flow.BM-Test-Flow-IaC.id},
-            hho_id = ${aws_connect_hours_of_operation.BM-Test-Hours-of-Operation.id},
+            flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
+            hho_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = ${aws_connect_queue.BM-Test-General.id},
+            queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
@@ -74,10 +74,10 @@ variable "test_cases" {
             welcome_text = "Welcome to the voice test flow",
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-Voice-IaC",
-            flow_id = ${aws_connect_contact_flow.BM-Test-Flow-Voice-IaC.id},
-            hho_id = ${aws_connect_hours_of_operation.BM-Test-Hours-of-Operation.id},
+            flow_id = "389273c0-5c26-4841-b0fa-64d193057123",
+            hho_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = ${aws_connect_queue.BM-Test-General.id},
+            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
             type = "Utterance",
             menu_levels = {
                 "1" = {
