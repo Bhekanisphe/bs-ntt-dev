@@ -5,7 +5,7 @@ import uuid
 instance_id = '6e669f6f-3783-4c0e-ac76-4f531575015d'
 connect = boto3.client('connect')
 table_name = 'bs-automated-testing'
-key_name = 'flow-name:testing-option'
+key_name = 'flow_name-testing_option'
 pk_value = ''
 
 def config():
@@ -16,7 +16,7 @@ def config():
 
     dyanmodb_data = dynamodb.get_item(
         TableName = table_name,
-        Key={'flow-name:testing-option' : {'S': pk_value}}
+        Key={'flow_name-testing_option' : {'S': pk_value}}
     )
 
     def get_menu_levels():
@@ -45,7 +45,7 @@ def config():
         'instance_id' : instance_id,
         'region' : region,
         'account_id' : account_id,
-        'flow_name' : dyanmodb_data['Item']['flow-name:testing-option']['S'],
+        'flow_name' : dyanmodb_data['Item']['flow_name-testing_option']['S'],
         'description' : dyanmodb_data['Item']['description']['S'],
         'flow_id' : dyanmodb_data['Item']['flow_id']['S'],
         'hoo_id' : dyanmodb_data['Item']['hoo_id']['S'],

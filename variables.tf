@@ -20,12 +20,12 @@ variable "table_name" {
 variable "hash_key" {
     type = string
     description = "The hash key for the DynamoDB table"
-    default = "flow-name:testing-option"
+    default = "flow_name-testing_option"
 }
 
 variable "test_cases" {
     type = map(object({
-    flow-name:testing-option = string
+    flow_name-testing_option = string
     caller_number= string
     description = string
     flow_id = string
@@ -44,7 +44,7 @@ variable "test_cases" {
     description = "List of test cases for the DynamoDB table"
     default = {
         "BM-Test-Flow-IaC:1" = {
-            flow-name:testing-option = "BM-Test-Flow-IaC:1",
+            flow_name-testing_option = "BM-Test-Flow-IaC:1",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC",
@@ -69,7 +69,7 @@ variable "test_cases" {
             }
         },
         "BM-Test-Flow-Voice-IaC:2" = {
-            flow-name:testing-option = "BM-Test-Flow-Voice-IaC:2",
+            flow_name-testing_option = "BM-Test-Flow-Voice-IaC:2",
             welcome_text = "Welcome to the voice test flow",
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-Voice-IaC",

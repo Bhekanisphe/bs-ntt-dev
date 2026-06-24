@@ -1,10 +1,10 @@
 resource "aws_dynamodb_table" "BS-Automated-Testing-Table" {
   name         = "bs-automated-testing-iac"
   billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "flow-name:testing-option"
+  hash_key     = "flow_name-testing_option"
     // Only primary key is required for a DynamoDB table, but you can add additional attributes if needed
     attribute {
-        name = "flow-name:testing-option"
+        name = "flow_name-testing_option"
         type = "S"
     }
   # Enable stream — sends change events to Lambda
@@ -17,13 +17,13 @@ resource "aws_dynamodb_table" "BS-Automated-Testing-Table" {
   }
 }
 
-resource "aws_dynamodb_table_item" "BS-Test-IaC-Flow:1" {
+resource "aws_dynamodb_table_item" "Test-Case-Items" {
     for_each = var.test_cases
     table_name = var.table_name
     hash_key   = var.hash_key
 
     item = jsonencode({
-        "flow-name:testing-option" = each.value["flow-name:testing-option"]
+        "flow_name-testing_option" = each.value["flow_name-testing_option"]
         "caller_number"            = each.value.caller_number
         "description"              = each.value.description
         "flow_id"                  = each.value.flow_id

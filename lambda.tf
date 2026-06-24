@@ -62,7 +62,6 @@ resource "aws_lambda_function" "bs-automated-testing" {
   role          = aws_iam_role.lambda_role.arn
   handler       = "auto_test_lambda.lambda_handler"
   source_code_hash = filebase64sha256(data.archive_file.lambda_file.output_path)
-  //code_sha256   = data.archive_file.lambda_file.output_base64sha256
 
   runtime = "python3.13"
 
