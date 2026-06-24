@@ -26,24 +26,15 @@ resource "aws_iam_role_policy" "lambda_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        sid       = "DynamoDBFullAccess"
-        actions   = ["dynamodb:*"]
-        resources = [
-        aws_dynamodb_table.BS-Automated-Testing-Table.arn,
-        "${aws_dynamodb_table.BS-Automated-Testing-Table.arn}/*"
-        ]
-      },
-      {
-        Effect = "Allow"
         Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents"
+          "connect:*",
+          "dynamodb:*",
         ]
+        Effect   = "Allow"
         Resource = "*"
-      }
+      },
     ]
-    })
+  })
 }
 
 # Package the Lambda function code
