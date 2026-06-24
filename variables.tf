@@ -14,7 +14,7 @@ variable "days_of_week" {
 variable "table_name" {
     type = string
     description = "The name of the DynamoDB table"
-    default = "BS-Automated-Testing-Table"
+    default = "bs-automated-testing-iac"
 }
 
 variable "hash_key" {
