@@ -52,7 +52,7 @@ variable "test_cases" {
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
+            queue_id = "c4e812f3-09b3-4cf5-992c-f2dfb52153a2",
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
@@ -77,19 +77,19 @@ variable "test_cases" {
             flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            queue_id = "c4e812f3-09b3-4cf5-992c-f2dfb52153a2",
             type = "Utterance",
             menu_levels = {
                 "1" = {
                     identifier = "Utterance 1",
-                    message = "Please let us know the purpose of your call. You can do this by saying what you need assistance with in a clear voice.",
-                    user_action = "1",
-                    next = "Check queue"
+                    message = "Please let us know the purpose of your call. You can do this by saying what you need assistance with in a clear voice",
+                    user_action = "I have a technical problem",
+                    next = "Utterance 2"
                 },
                 "2" = {
                     identifier = "Utterance 2",
                     message = "Welcome to the technical menu. Please specify if you have wifi issues or laptop issues. Please say this in a clear voice.",
-                    user_action = "2",
+                    user_action = "I have wifi issues",
                     next = "Check queue"
                 }
             }
