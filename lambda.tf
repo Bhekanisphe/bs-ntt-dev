@@ -29,6 +29,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
         Action = [
           "connect:*",
           "dynamodb:*",
+          "logs:*"
         ]
         Effect   = "Allow"
         Resource = "*"
