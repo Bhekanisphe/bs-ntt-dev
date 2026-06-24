@@ -27,7 +27,7 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "caller_number"            = { "S" = each.value.caller_number },
         "description"              = { "S" = each.value.description },
         "flow_id"                  = { "S" = each.value.flow_id },
-        "hho_id"                   = { "S" = each.value.hho_id },
+        "hoo_id"                   = { "S" = each.value.hoo_id },
         "hoo_result"               = { "S" = each.value.hoo_result },
         "queue_id"                 = { "S" = each.value.queue_id },
         "type"                     = { "S" = each.value.type },

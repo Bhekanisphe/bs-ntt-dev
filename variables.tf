@@ -29,7 +29,7 @@ variable "test_cases" {
     caller_number= string
     description = string
     flow_id = string
-    hho_id = string
+    hoo_id = string
     hoo_result = string
     queue_id = string
     type = string
@@ -50,7 +50,7 @@ variable "test_cases" {
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC",
             flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
-            hho_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
             queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
             type = "DtmfInput",
@@ -75,7 +75,7 @@ variable "test_cases" {
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-Voice-IaC",
             flow_id = "389273c0-5c26-4841-b0fa-64d193057123",
-            hho_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
             queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
             type = "Utterance",
