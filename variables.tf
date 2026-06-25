@@ -50,7 +50,7 @@ variable "test_cases" {
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
-            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_id = "73e9d156-a62d-4471-9cbb-af126df78a1d",
             hoo_result = "InHour",
             queue_id = "c4e812f3-09b3-4cf5-992c-f2dfb52153a2",
             type = "DtmfInput",
@@ -77,7 +77,7 @@ variable "test_cases" {
             flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "c4e812f3-09b3-4cf5-992c-f2dfb52153a2",
+            queue_id = "73e9d156-a62d-4471-9cbb-af126df78a1d",
             type = "Utterance",
             menu_levels = {
                 "1" = {
