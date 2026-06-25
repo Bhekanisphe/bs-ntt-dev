@@ -52,7 +52,7 @@ variable "test_cases" {
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "73e9d156-a62d-4471-9cbb-af126df78a1d",
+            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
