@@ -25,3 +25,4 @@ resource "aws_connect_contact_flow" "BM-Test-Flow-Voice-IaC" {
     "Method"      = "Create"
   }
 }
+
