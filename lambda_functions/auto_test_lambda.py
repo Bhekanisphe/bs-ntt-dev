@@ -435,7 +435,13 @@ def run():
             'SourcePhoneNumber': config()['caller_number'],
             'FlowId': config()["flow_id"]
         },
-    },   
+        
+    }, 
+        Tags={
+        'Name': config()["flow_name"],
+        'Description': config()["description"],
+        'Environment': 'Develpment'
+    }  
     )
     
     execute_test = connect.start_test_case_execution(

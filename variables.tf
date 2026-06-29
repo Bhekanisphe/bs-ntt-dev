@@ -47,7 +47,7 @@ variable "test_cases" {
         "BM-Test-Flow-IaC:1" = {
             flow_name-testing_option = "BM-Test-Flow-IaC:1",
             welcome_text = "Welcome to the test flow",
-            caller_number = "+1234567898",
+            caller_number = "+1234567891",
             description = "Test case for BM-Test-Flow-IaC",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
@@ -72,7 +72,7 @@ variable "test_cases" {
         "BM-Test-Flow-Voice-IaC:2" = {
             flow_name-testing_option = "BM-Test-Flow-Voice-IaC:2",
             welcome_text = "Welcome to the voice test flow",
-            caller_number = "+1234567893",
+            caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-Voice-IaC",
             flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
