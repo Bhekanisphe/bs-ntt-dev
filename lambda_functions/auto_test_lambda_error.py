@@ -16,7 +16,7 @@ def config():
 
     dyanmodb_data = dynamodb.get_item(
         TableName = table_name,
-        Key={'flow_name-testing_option' : {'S': pk_value}}
+        Key={'flow_name-testing_option' : {'S': 'BM-Test-Flow-IaC:1-Timeout'}}
     )
 
     def get_menu_levels():
