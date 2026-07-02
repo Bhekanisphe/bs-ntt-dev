@@ -17,31 +17,67 @@ resource "aws_dynamodb_table" "BS-Automated-Testing-Table" {
   }
 }
 
+
 resource "aws_dynamodb_table_item" "Test-Case-Items" {
     for_each = var.test_cases
     table_name = aws_dynamodb_table.BS-Automated-Testing-Table.name
     hash_key   = var.hash_key
 
-    item = jsonencode({
-        "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
-        "caller_number"            = { "S" = each.value.caller_number },
-        "description"              = { "S" = each.value.description },
-        "flow_id"                  = { "S" = each.value.flow_id },
-        "hoo_id"                   = { "S" = each.value.hoo_id },
-        "hoo_result"               = { "S" = each.value.hoo_result },
-        "queue_id"                 = { "S" = each.value.queue_id },
-        "type"                     = { "S" = each.value.type },
-        "welcome_text"             = { "S" = each.value.welcome_text },
-        "menu_levels"              = { "M" = { for key, value in each.value.menu_levels : key => {
-            "M" = {
-                "identifier"  = { "S" = value.identifier },
-                "message"     = { "S" = value.message },
-                "user_action" = { "S" = value.user_action },
-                "next"        = { "S" = value.next }
-            }
+    variable "error" {}
+
+    is_timeout = can(each.value.retry_settings)
+
+    item = is_timeout == true ? (jsonencode({
+    "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
+    "caller_number"            = { "S" = each.value.caller_number },
+    "description"              = { "S" = each.value.description },
+    "flow_id"                  = { "S" = each.value.flow_id },
+    "hoo_id"                   = { "S" = each.value.hoo_id },
+    "hoo_result"               = { "S" = each.value.hoo_result },
+    "queue_id"                 = { "S" = each.value.queue_id },
+    "type"                     = { "S" = each.value.type },
+    "welcome_text"             = { "S" = each.value.welcome_text },
+    "menu_levels"              = { "M" = { for key, value in each.value.menu_levels : key => {
+        "M" = {
+            "identifier"  = { "S" = value.identifier },
+            "message"     = { "S" = value.message },
+            "user_action" = { "S" = value.user_action },
+            "next"        = { "S" = value.next }
         }
-        
-        }}
-    })
+    } } }
+    })) : (jsonencode({
+    "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
+    "caller_number"            = { "S" = each.value.caller_number },
+    "description"              = { "S" = each.value.description },
+    "flow_id"                  = { "S" = each.value.flow_id },
+    "hoo_id"                   = { "S" = each.value.hoo_id },
+    "hoo_result"               = { "S" = each.value.hoo_result },
+    "queue_id"                 = { "S" = each.value.queue_id },
+    "type"                     = { "S" = each.value.type },
+    "welcome_text"             = { "S" = each.value.welcome_text },
+    "menu_levels"              = { "M" = { for key, value in each.value.menu_levels : key => {
+        "M" = {
+            "identifier"  = { "S" = value.identifier },
+            "message"     = { "S" = value.message },
+            "user_action" = { "S" = value.user_action },
+            "next"        = { "S" = value.next }
+        }
+    } } },
+    "retry_settings" = { "M" = {
+        "default" = { "M" = {
+            "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
+            "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
+            "transfer_message" = { "S" = each.value.retry_settings.default.transfer_message },
+            "wrong_action"     = { "S" = each.value.retry_settings.default.wrong_action }
+        } },
+        "timeout" = { "M" = {
+            "attempts"         = { "N" = tostring(each.value.retry_settings.timeout.attempts) },
+            "retry_message"    = { "S" = each.value.retry_settings.timeout.retry_message },
+            "transfer_message" = { "S" = each.value.retry_settings.timeout.transfer_message }
+        } }
+    } }
+}))
+
+    //item = 
 
 }

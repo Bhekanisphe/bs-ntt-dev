@@ -93,3 +93,13 @@ resource "aws_lambda_event_source_mapping" "lambda_dynamodb_trigger" {
     Name = "dynamodb-stream-mapping"
   }
 }
+
+resource "aws_lambda_event_source_mapping" "lambda_dynamodb_trigger_error_handling" {
+  event_source_arn  = aws_dynamodb_table.BS-Automated-Testing-Table.stream_arn
+  function_name     = aws_lambda_function.bs-automated-testing_error_handling.arn
+  starting_position = "LATEST"
+
+  tags = {
+    Name = "dynamodb-stream-mapping-error-handling"
+  }
+}

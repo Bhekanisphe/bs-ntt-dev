@@ -93,6 +93,44 @@ variable "test_cases" {
                     next = "Check queue"
                 }
             }
+        },
+        "BM-Test-Flow-IaC:3" = {
+            flow_name-testing_option = "BM-Test-Flow-IaC:Timeout",
+            welcome_text = "Welcome to the test flow with retry settings",
+            caller_number = "+1234567892",
+            description = "Test case for BM-Test-Flow-IaC with retry settings",
+            flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
+            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_result = "InHour",
+            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            type = "DtmfInput",
+            menu_levels = {
+                "1" = {
+                    identifier = "Option 1",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    user_action = "1",
+                    next = "Option 1.2"
+                },
+                "2" = {
+                    identifier = "Option 1.2",
+                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu.",
+                    user_action = "2",
+                    next = "Check queue"
+                }
+            },
+            retry_settings = {
+                default = {
+                    attempts         = 3,
+                    retry_message    = "Sorry, I didn't catch that. Please try again.",
+                    transfer_message = "Transferring you to an agent.",
+                    wrong_action     = "Sorry, that was an invalid option."
+                },
+                timeout = {
+                    attempts         = 2,
+                    retry_message    = "Sorry, it seems you took too long to respond. Please try again.",
+                    transfer_message = "Transferring you to an agent."
+                }
+            }
         }
     }
 }
