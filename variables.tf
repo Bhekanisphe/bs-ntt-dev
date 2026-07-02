@@ -41,17 +41,17 @@ variable "test_cases" {
         next = string
     }))
     retry_settings = optional(object({
-        default = optional(object({
+        default = object({
             attempts = number
             retry_message = string
             transfer_message = string
             wrong_action = string
-        }))
-        timeout = optional(object({
+        })
+        timeout = object({
             attempts = number
             retry_message = string
             transfer_message = string
-        }))
+        })
     }))
     }))
 
