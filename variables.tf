@@ -40,7 +40,21 @@ variable "test_cases" {
         user_action = string
         next = string
     }))
+    retry_settings = optional(object({
+        default = optional(object({
+            attempts = number
+            retry_message = string
+            transfer_message = string
+            wrong_action = string
+        }))
+        timeout = optional(object({
+            attempts = number
+            retry_message = string
+            transfer_message = string
+        }))
     }))
+    }))
+
     
     description = "List of test cases for the DynamoDB table"
     default = {
@@ -96,7 +110,7 @@ variable "test_cases" {
         },
         "BM-Test-Flow-IaC:3" = {
             flow_name-testing_option = "BM-Test-Flow-IaC:Timeout",
-            welcome_text = "Welcome to the test flow with retry settings",
+            welcome_text = "Welcome to the test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Flow-IaC with retry settings",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
@@ -114,21 +128,21 @@ variable "test_cases" {
                 "2" = {
                     identifier = "Option 1.2",
                     message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu.",
-                    user_action = "2",
+                    user_action = "default",
                     next = "Check queue"
                 }
             },
             retry_settings = {
                 default = {
                     attempts         = 3,
-                    retry_message    = "Sorry, I didn't catch that. Please try again.",
-                    transfer_message = "Transferring you to an agent.",
-                    wrong_action     = "Sorry, that was an invalid option."
+                    retry_message    = "You have not selected any option. Please try again.",
+                    transfer_message = "You have not selected a correct option, please wait while we transfer you to an agent. Thank you",
+                    wrong_action     = "0"
                 },
                 timeout = {
                     attempts         = 2,
-                    retry_message    = "Sorry, it seems you took too long to respond. Please try again.",
-                    transfer_message = "Transferring you to an agent."
+                    retry_message    = "You have not selected any option. Please try again.",
+                    transfer_message = "You have not selected a correct option, please wait while we transfer you to an agent. Thank you"
                 }
             }
         }
