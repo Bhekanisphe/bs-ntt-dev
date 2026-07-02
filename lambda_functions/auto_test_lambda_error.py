@@ -78,8 +78,10 @@ def config():
         'hoo_display_name' : hoo['HoursOfOperation']['Name'],
         'caller_number' : dyanmodb_data['Item']['caller_number']['S'],
         'type' : dyanmodb_data['Item']['type']['S'],
-        'default' : get_retry_levels()['default'],
-        'timeout' : get_retry_levels()['timeout']
+        'retry_settings' : {
+            'default' : get_retry_levels()['default'],
+            'timeout' : get_retry_levels()['timeout']
+        }
     }
 
     return test_case_data
