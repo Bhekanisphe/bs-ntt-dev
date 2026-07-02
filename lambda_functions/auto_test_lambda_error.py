@@ -4,8 +4,8 @@ import uuid
 
 instance_id = '6e669f6f-3783-4c0e-ac76-4f531575015d'
 connect = boto3.client('connect')
-table_name = 'bs-automated-testing-iac'
-key_name = 'flow_name-testing_option'
+table_name = 'bs-automated-testing-error'
+key_name = 'flow_name:testing_option'
 pk_value = ''
 
 def config():
@@ -16,9 +16,9 @@ def config():
 
     dyanmodb_data = dynamodb.get_item(
         TableName = table_name,
-        Key={'flow_name-testing_option' : {'S': 'BM-Test-Flow-IaC:1-Timeout'}}
+        Key={'flow_name:testing_option' : {'S': 'BM-Test-Flow-IaC:1-Timeout'}}
     )
-
+    
     def get_menu_levels():
         menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
         menu_levels = []
@@ -33,18 +33,18 @@ def config():
         return menu_levels
     
     def get_retry_levels():
-        retry_levels_data = dyanmodb_data['Item']['retry_levels']['M']
+        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M']
         retry_settings = {}
         
         default_retry_levels = {
-            "attempts" : retry_levels_data['default']['M']['attempts']['N'],
+            "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
             "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
             "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
             "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
         }
 
         timeout_retry_levels = {
-            "attempts" : retry_levels_data['timeout']['M']['attempts']['N'],
+            "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
             "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
             "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
         }
@@ -52,10 +52,10 @@ def config():
         retry_settings.update({"default": default_retry_levels, "timeout": timeout_retry_levels})
 
         return retry_settings
-
+    
     queue = connect.describe_queue(
         InstanceId = instance_id,
-        QueueId = dyanmodb_data['Item']['queue_id']['S']
+        QueueId = dyanmodb_data["Item"]['queue_id']['S']
     )
     hoo = connect.describe_hours_of_operation(
         InstanceId = instance_id,
@@ -66,7 +66,7 @@ def config():
         'instance_id' : instance_id,
         'region' : region,
         'account_id' : account_id,
-        'flow_name' : dyanmodb_data['Item']['flow_name-testing_option']['S'],
+        'flow_name' : dyanmodb_data['Item']['flow_name:testing_option']['S'],
         'description' : dyanmodb_data['Item']['description']['S'],
         'flow_id' : dyanmodb_data['Item']['flow_id']['S'],
         'hoo_id' : dyanmodb_data['Item']['hoo_id']['S'],
@@ -81,10 +81,11 @@ def config():
         'default' : get_retry_levels()['default'],
         'timeout' : get_retry_levels()['timeout']
     }
+
     return test_case_data
 
 def lambda_handler(event, context):
     return {
         'statusCode': 200,
-        'body': json.dumps(config())
+        'body': config()
     }
