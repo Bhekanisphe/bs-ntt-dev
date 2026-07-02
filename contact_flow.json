@@ -422,7 +422,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/42814f8c-931b-485d-bc47-4f20debcbfab"
+        "QueueId": "a3ddb3e2-2b7d-4561-9336-749cfa14f910"
       },
       "Identifier": "4e323884-f61c-40ea-9471-5d19425d8667",
       "Type": "UpdateContactTargetQueue",
@@ -456,7 +456,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/fd49c6d9-497a-423b-a15b-b28e286dcd36"
+        "QueueId": "6b1b6ba4-22cb-4ace-a1ec-77cbde8fd152"        
       },
       "Identifier": "d80eb5f1-2fdd-4db9-a375-8d3859ba6743",
       "Type": "UpdateContactTargetQueue",
@@ -549,7 +549,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/42814f8c-931b-485d-bc47-4f20debcbfab"
+        "QueueId": "a3ddb3e2-2b7d-4561-9336-749cfa14f910"
       },
       "Identifier": "b1e5c6ad-7196-497b-9f8d-27e904e8f80a",
       "Type": "UpdateContactTargetQueue",
@@ -600,7 +600,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/42814f8c-931b-485d-bc47-4f20debcbfab"
+        "QueueId": "a3ddb3e2-2b7d-4561-9336-749cfa14f910"
       },
       "Identifier": "1e25d69d-45e7-42bc-b9b4-4f505b716ec0",
       "Type": "UpdateContactTargetQueue",
@@ -681,7 +681,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/332ce5c5-c74e-44c8-9995-5d97b0adb207"
+        "QueueId": "73e9d156-a62d-4471-9cbb-af126df78a1d"
       },
       "Identifier": "cab7e3de-ec05-4c80-ad2b-aaf7d23a01bf",
       "Type": "UpdateContactTargetQueue",
@@ -697,7 +697,7 @@
     },
     {
       "Parameters": {
-        "QueueId": "arn:aws:connect:af-south-1:687244881512:instance/6e669f6f-3783-4c0e-ac76-4f531575015d/queue/ca34dc02-bedc-47da-a234-5a115b5fd61a"
+        "QueueId": "14b354a2-c688-4e1f-9ba6-e90089a615cc"
       },
       "Identifier": "d59fc8b0-9fa9-4d74-b115-d0506f35f887",
       "Type": "UpdateContactTargetQueue",
