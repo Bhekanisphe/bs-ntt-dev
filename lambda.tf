@@ -45,6 +45,12 @@ data "archive_file" "lambda_file" {
   output_path = "${path.root}/lambda_functions/function.zip"
 }
 
+data "archive_file" "lambda_file_error_handling" {
+  type        = "zip"
+  source_file = "${path.root}/lambda_functions/auto_test_lambda_error.py"
+  output_path = "${path.root}/lambda_functions/function_error_handling.zip"
+}
+
 # Lambda function
 resource "aws_lambda_function" "bs-automated-testing" {
   filename      = data.archive_file.lambda_file.output_path
@@ -52,6 +58,22 @@ resource "aws_lambda_function" "bs-automated-testing" {
   role          = aws_iam_role.lambda_role.arn
   handler       = "auto_test_lambda.lambda_handler"
   source_code_hash = filebase64sha256(data.archive_file.lambda_file.output_path)
+
+  runtime = "python3.13"
+  timeout = 300
+
+  tags = {
+    Environment = "development"
+    Application = "terraform"
+  }
+}
+
+resource "aws_lambda_function" "bs-automated-testing_error_handling" {
+  filename      = data.archive_file.lambda_file_error_handling.output_path
+  function_name = "bs-automated-testing-error-handling"
+  role          = aws_iam_role.lambda_role.arn
+  handler       = "auto_test_lambda_error.lambda_handler"
+  source_code_hash = filebase64sha256(data.archive_file.lambda_file_error_handling.output_path)
 
   runtime = "python3.13"
   timeout = 300
