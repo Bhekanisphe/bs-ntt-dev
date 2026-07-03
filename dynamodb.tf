@@ -25,7 +25,7 @@ locals {
   }
 
   retry_settings = {
-    for k, v in var.test_cases :
+    for k, v in var.test_cases.retry_settings :
     k => try(v.retry_settings, null) != null
   }
 }
