@@ -54,8 +54,9 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "next"        = { "S" = value.next }
       }
     } } },
-    "retry_settings" = { "M" = ({
-      local.retry_settings_default[each.key] ? { 
+    "retry_settings" = { "M" = (
+      local.retry_settings_default[each.key] ? 
+      { 
         "default" = { "M" = {
           "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
           "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
@@ -68,7 +69,7 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "attempts"         = { "N" = tostring(each.value.retry_settings.timeout.attempts) },
         "retry_message"    = { "S" = each.value.retry_settings.timeout.retry_message },
         "transfer_message" = { "S" = each.value.retry_settings.timeout.transfer_message }
-      } } 
+      } 
       }
     } )}
   })) : (jsonencode({
