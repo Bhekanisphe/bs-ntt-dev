@@ -86,7 +86,6 @@ def config():
             'timeout' : get_menu_levels()[1]['timeout']
         }
     }
-    print("Test case data:", json.dumps(test_case_data, indent=2))
     return test_case_data
 
 
@@ -540,6 +539,7 @@ def lambda_handler(event, context):
 
         pk_value = list(partition_key.values())[0]
     run()
+    print(config())
     
     return {
         'statusCode': 200,
