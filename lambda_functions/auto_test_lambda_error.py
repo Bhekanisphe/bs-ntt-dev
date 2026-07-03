@@ -74,7 +74,7 @@ def config():
         'hoo_results' : dyanmodb_data['Item']['hoo_result']['S'],
         'queue_id' : dyanmodb_data['Item']['queue_id']['S'],
         'welcome_text' : dyanmodb_data['Item']['welcome_text']['S'],
-        'menu_levels' : get_menu_levels(),
+        'menu_levels' : get_menu_levels()[2],
         'queue_display_name' : queue['Queue']['Name'],
         'hoo_display_name' : hoo['HoursOfOperation']['Name'],
         'caller_number' : dyanmodb_data['Item']['caller_number']['S'],
