@@ -32,7 +32,8 @@ def config():
 
     def get_menu_levels():
         menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
-        menu_levels = [{"default":{}}, {"timeout":{}}]
+        menu_levels = []
+        levels_data = [{"default":{}}, {"timeout":{}}]
 
         retry_levels_data = dyanmodb_data['Item']['retry_settings']['M']
 
@@ -45,7 +46,7 @@ def config():
             })
 
             if menu_levels_data[menu_level]['M']['user_action']['S'] == "default":
-                menu_levels[0] = {
+                levels_data[0] = {
                     "default" : {
                         "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
                         "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
@@ -53,7 +54,7 @@ def config():
                         "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
             }}
             if menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
-                menu_levels[1] = {
+                levels_data[1] = {
                     "timeout" : {
                         "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
                         "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
@@ -64,7 +65,7 @@ def config():
                 pass
 
 
-        return menu_levels
+        return levels_data, menu_levels
     
 
     test_case_data = {
@@ -78,14 +79,14 @@ def config():
         'hoo_results' : dyanmodb_data['Item']['hoo_result']['S'],
         'queue_id' : dyanmodb_data['Item']['queue_id']['S'],
         'welcome_text' : dyanmodb_data['Item']['welcome_text']['S'],
-        'menu_levels' : get_menu_levels()[2],
+        'menu_levels' : get_menu_levels()[1],
         'queue_display_name' : queue['Queue']['Name'],
         'hoo_display_name' : hoo['HoursOfOperation']['Name'],
         'caller_number' : dyanmodb_data['Item']['caller_number']['S'],
         'type' : dyanmodb_data['Item']['type']['S'],
         'retry_settings' : {
             'default' : get_menu_levels()[0]['default'],
-            'timeout' : get_menu_levels()[1]['timeout']
+            'timeout' : get_menu_levels()[0]['timeout']
         }
     }
     return test_case_data
