@@ -60,6 +60,8 @@ def config():
                         "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
             }
             }
+            else:
+                pass
 
 
         return menu_levels
