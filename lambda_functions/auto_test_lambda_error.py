@@ -21,7 +21,9 @@ def config():
     
     def get_menu_levels():
         menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
-        menu_levels = []
+        menu_levels = [{"default":{}}, {"timeout":{}}]
+
+        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M']
 
         for menu_level in menu_levels_data:
             menu_levels.append({
@@ -30,29 +32,28 @@ def config():
             'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
             'next' : menu_levels_data[menu_level]['M']['next']['S']
             })
+
+            if menu_levels_data[menu_level]['M']['user_action']['S'] == "default":
+                menu_levels[0] = {
+                    "default" : {
+                        "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
+                        "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
+                        "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
+                        "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
+            }}
+            elif menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
+                menu_levels[1] = {
+                    "timeout" : {
+                        "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
+                        "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
+                        "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
+            }
+            }
+
+
         return menu_levels
     
-    def get_retry_levels():
-        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M']
-        retry_settings = {}
-        
-        default_retry_levels = {
-            "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
-            "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
-            "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
-            "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
-        }
 
-        timeout_retry_levels = {
-            "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
-            "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
-            "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
-        }
-
-        retry_settings.update({"default": default_retry_levels, "timeout": timeout_retry_levels})
-
-        return retry_settings
-    
     queue = connect.describe_queue(
         InstanceId = instance_id,
         QueueId = dyanmodb_data["Item"]['queue_id']['S']
@@ -79,8 +80,8 @@ def config():
         'caller_number' : dyanmodb_data['Item']['caller_number']['S'],
         'type' : dyanmodb_data['Item']['type']['S'],
         'retry_settings' : {
-            'default' : get_retry_levels()['default'],
-            'timeout' : get_retry_levels()['timeout']
+            'default' : get_menu_levels()[0]['default'],
+            'timeout' : get_menu_levels()[1]['timeout']
         }
     }
 
