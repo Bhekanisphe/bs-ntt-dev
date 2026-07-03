@@ -41,25 +41,24 @@ variable "test_cases" {
         next = string
     }))
     retry_settings = optional(object({
-        default = object({
+        default = optional(object({
             attempts = number
             retry_message = string
             transfer_message = string
             wrong_action = string
-        })
-        timeout = object({
+        }))
+        timeout = optional(object({
             attempts = number
             retry_message = string
             transfer_message = string
-        })
+        }))
     }))
     }))
-
     
     description = "List of test cases for the DynamoDB table"
     default = {
         "BM-Test-Flow-IaC:1" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:1",
+            flow_name-testing_option = "BM-Test-Flow-IaC:1.2",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567891",
             description = "Test case for BM-Test-Flow-IaC",
@@ -84,7 +83,7 @@ variable "test_cases" {
             }
         },
         "BM-Test-Flow-Voice-IaC:2" = {
-            flow_name-testing_option = "BM-Test-Flow-Voice-IaC:2",
+            flow_name-testing_option = "BM-Test-Flow-Voice-IaC:Technical-Wifi",
             welcome_text = "Welcome to the voice test flow",
             caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-Voice-IaC",
@@ -109,10 +108,10 @@ variable "test_cases" {
             }
         },
         "BM-Test-Flow-IaC:3" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:Timeout",
+            flow_name-testing_option = "BM-Test-Flow-IaC:Opt1-Default",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567892",
-            description = "Test case for BM-Test-Flow-IaC with retry settings",
+            description = "Test case for BM-Test-Flow-IaC - default with retry settings",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
@@ -138,7 +137,87 @@ variable "test_cases" {
                     retry_message    = "You have not selected any option. Please try again.",
                     transfer_message = "You have not selected a correct option, please wait while we transfer you to an agent. Thank you",
                     wrong_action     = "0"
+                }
+            }
+        }
+        "BM-Test-Flow-IaC:4" = {
+            flow_name-testing_option = "BM-Test-Flow-IaC:Opt1-Timeout",
+            welcome_text = "Welcome to the test flow",
+            caller_number = "+1234567893",
+            description = "Test case for BM-Test-Flow-IaC - timeout with retry settings",
+            flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
+            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_result = "InHour",
+            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            type = "DtmfInput",
+            menu_levels = {
+                "1" = {
+                    identifier = "Option 1",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    user_action = "1",
+                    next = "Option 1.2"
                 },
+                "2" = {
+                    identifier = "Option 1.2",
+                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu.",
+                    user_action = "timeout",
+                    next = "Check queue"
+                }
+            },
+            retry_settings = {
+                timeout = {
+                    attempts         = 2,
+                    retry_message    = "You have not selected any option. Please try again.",
+                    transfer_message = "You have not selected a correct option, please wait while we transfer you to an agent. Thank you"
+                }
+            }
+        }
+        "BM-Test-Flow-IaC:5" = {
+            flow_name-testing_option = "BM-Test-Flow-IaC:Main-default",
+            welcome_text = "Welcome to the test flow",
+            caller_number = "+1234567894",
+            description = "Test case for BM-Test-Flow-IaC - main-default",
+            flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
+            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_result = "InHour",
+            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            type = "DtmfInput",
+            menu_levels = {
+                "1" = {
+                    identifier = "Option 1",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    user_action = "default",
+                    next = "Check queue"
+                }
+            },
+            retry_settings = {
+                default = {
+                    attempts         = 3,
+                    retry_message    = "You have not selected any option. Please try again.",
+                    transfer_message = "You have not selected a correct option, please wait while we transfer you to an agent. Thank you",
+                    wrong_action     = "0"
+                }
+            }
+        }
+        "BM-Test-Flow-IaC:6" = {
+            flow_name-testing_option = "BM-Test-Flow-IaC:Main-timeout",
+            welcome_text = "Welcome to the test flow",
+            caller_number = "+1234567895",
+            description = "Test case for BM-Test-Flow-IaC - main-timeout",
+            flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
+            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_result = "InHour",
+            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            type = "DtmfInput",
+            menu_levels = {
+                "1" = {
+                    identifier = "Option 1",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    user_action = "timeout",
+                    next = "Check queue"
+                }
+            },
+            retry_settings = {
                 timeout = {
                     attempts         = 2,
                     retry_message    = "You have not selected any option. Please try again.",
