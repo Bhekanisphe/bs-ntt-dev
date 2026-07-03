@@ -7,17 +7,25 @@ connect = boto3.client('connect')
 table_name = 'bs-automated-testing-iac'
 key_name = 'flow_name-testing_option'
 pk_value = ''
+region = 'af-south-1'
+account_id = '687244881512'
+
+dynamodb = boto3.client('dynamodb')
+
+dyanmodb_data = dynamodb.get_item(
+    TableName = table_name,
+    Key={key_name : {'S': pk_value}}
+)
+queue = connect.describe_queue(
+        InstanceId = instance_id,
+        QueueId = dyanmodb_data["Item"]['queue_id']['S']
+    )
+hoo = connect.describe_hours_of_operation(
+    InstanceId = instance_id,
+    HoursOfOperationId = dyanmodb_data['Item']['hoo_id']['S']
+)
 
 def config():
-    region = 'af-south-1'
-    account_id = '687244881512'
-
-    dynamodb = boto3.client('dynamodb')
-
-    dyanmodb_data = dynamodb.get_item(
-        TableName = table_name,
-        Key={key_name : {'S': pk_value}}
-    )
     
     def get_menu_levels():
         menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
@@ -53,15 +61,6 @@ def config():
 
         return menu_levels
     
-
-    queue = connect.describe_queue(
-        InstanceId = instance_id,
-        QueueId = dyanmodb_data["Item"]['queue_id']['S']
-    )
-    hoo = connect.describe_hours_of_operation(
-        InstanceId = instance_id,
-        HoursOfOperationId = dyanmodb_data['Item']['hoo_id']['S']
-    )
 
     test_case_data = {
         'instance_id' : instance_id,
