@@ -52,7 +52,7 @@ def config():
                         "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
                         "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
             }}
-            elif menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
+            if menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
                 menu_levels[1] = {
                     "timeout" : {
                         "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
