@@ -440,7 +440,7 @@ def run():
         Tags={
         'Name': config()["flow_name"],
         'Description': config()["description"],
-        'Environment': 'Develpment'
+        'Environment': 'Development'
     }  
     )
     
@@ -456,7 +456,6 @@ def lambda_handler(event, context):
     # TODO implement
     
     for record in event['Records']:
-        event_name = record['eventName']
         keys = record['dynamodb']['Keys']
         
         global pk_value
