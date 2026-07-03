@@ -58,7 +58,7 @@ variable "test_cases" {
     description = "List of test cases for the DynamoDB table"
     default = {
         "BM-Test-Flow-IaC:1" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:1.2",
+            flow_name-testing_option = "BM-Test-Flow-IaC:Opt1.2",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567891",
             description = "Test case for BM-Test-Flow-IaC",
@@ -115,7 +115,7 @@ variable "test_cases" {
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
@@ -148,7 +148,7 @@ variable "test_cases" {
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
@@ -180,7 +180,7 @@ variable "test_cases" {
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
@@ -207,7 +207,7 @@ variable "test_cases" {
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
             hoo_result = "InHour",
-            queue_id = "14b354a2-c688-4e1f-9ba6-e90089a615cc",
+            queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
             type = "DtmfInput",
             menu_levels = {
                 "1" = {
