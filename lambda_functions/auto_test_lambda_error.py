@@ -34,35 +34,42 @@ def config():
         menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
         menu_levels = []
         levels_data = [{"default":{}}, {"timeout":{}}]
+        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M'] if 'retry_settings' in dyanmodb_data['Item'] else {}
 
-        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M']
+        if 'retry_settings' not in dyanmodb_data['Item']:
+            for menu_level in menu_levels_data:
+                menu_levels.append({
+                'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
+                'message' : menu_levels_data[menu_level]['M']['message']['S'],
+                'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
+                'next' : menu_levels_data[menu_level]['M']['next']['S']
+                })
+        else:
+            for menu_level in menu_levels_data:
+                menu_levels.append({
+                'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
+                'message' : menu_levels_data[menu_level]['M']['message']['S'],
+                'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
+                'next' : menu_levels_data[menu_level]['M']['next']['S']
+                })
 
-        for menu_level in menu_levels_data:
-            menu_levels.append({
-            'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
-            'message' : menu_levels_data[menu_level]['M']['message']['S'],
-            'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
-            'next' : menu_levels_data[menu_level]['M']['next']['S']
-            })
-
-            if menu_levels_data[menu_level]['M']['user_action']['S'] == "default":
-                levels_data[0] = {
-                    "default" : {
-                        "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
-                        "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
-                        "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
-                        "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
-            }}
-            if menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
-                levels_data[1] = {
-                    "timeout" : {
-                        "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
-                        "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
-                        "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
-            }
-            }
-            else:
-                pass
+                if menu_levels_data[menu_level]['M']['user_action']['S'] == "default":
+                    levels_data[0] = {
+                        "default" : {
+                            "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
+                            "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
+                            "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
+                            "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
+                }}
+                if menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
+                    levels_data[1] = {
+                        "timeout" : {
+                            "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
+                            "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
+                            "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
+                    }}
+                else:
+                    pass
 
 
         return levels_data, menu_levels
