@@ -86,7 +86,7 @@ def config():
             'timeout' : get_menu_levels()[1]['timeout']
         }
     }
-
+    print("Test case data:", json.dumps(test_case_data, indent=2))
     return test_case_data
 
 
