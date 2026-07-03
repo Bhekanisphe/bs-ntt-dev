@@ -54,13 +54,13 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "next"        = { "S" = value.next }
       }
     } } },
-    "retry_settings" = { "M" = {
+    "retry_settings" = { "M" = ({
       local.retry_settings_default[each.key] ? { 
         "default" = { "M" = {
-        "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
-        "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
-        "transfer_message" = { "S" = each.value.retry_settings.default.transfer_message },
-        "wrong_action"     = { "S" = each.value.retry_settings.default.wrong_action }
+          "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
+          "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
+          "transfer_message" = { "S" = each.value.retry_settings.default.transfer_message },
+          "wrong_action"     = { "S" = each.value.retry_settings.default.wrong_action }
       } } 
       } :
       {
@@ -70,7 +70,7 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "transfer_message" = { "S" = each.value.retry_settings.timeout.transfer_message }
       } } 
       }
-    } }
+    } )}
   })) : (jsonencode({
     "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
     "caller_number"            = { "S" = each.value.caller_number },
