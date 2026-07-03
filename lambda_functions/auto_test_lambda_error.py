@@ -491,6 +491,7 @@ def build_test_case(config):
     return test_case
 
 def run():
+    print(config())
     test_case_list = connect.list_test_cases(
         InstanceId = instance_id,
         )
@@ -539,7 +540,6 @@ def lambda_handler(event, context):
 
         pk_value = list(partition_key.values())[0]
     run()
-    print(config())
     
     return {
         'statusCode': 200,
