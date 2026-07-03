@@ -54,12 +54,12 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
       }
     } } },
     "retry_settings" = { "M" = {
-      "default" = retry_settings[each.key] ? { "M" = {
+      "default" = retry_settings[each.key] ? jsonencode({ "M" = {
         "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
         "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
         "transfer_message" = { "S" = each.value.retry_settings.default.transfer_message },
         "wrong_action"     = { "S" = each.value.retry_settings.default.wrong_action }
-      } } : null,
+      } }) : null,
       "timeout" = { "M" = {
         "attempts"         = { "N" = tostring(each.value.retry_settings.timeout.attempts) },
         "retry_message"    = { "S" = each.value.retry_settings.timeout.retry_message },
