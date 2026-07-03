@@ -24,9 +24,14 @@ locals {
     k => try(v.retry_settings, null) != null
   }
 
-  retry_settings = {
+  retry_settings_default = {
     for k, v in var.test_cases :
     k => try(v.retry_settings.default, null) != null
+  }
+
+  retry_settings_timeout = {
+    for k, v in var.test_cases :
+    k => try(v.retry_settings.timeout, null) != null
   }
 }
 
@@ -54,17 +59,17 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
       }
     } } },
     "retry_settings" = { "M" = {
-      "default" = local.retry_settings[each.key] ? { "M" = {
+      "default" = local.retry_settings_default[each.key] ? { "M" = {
         "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
         "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
         "transfer_message" = { "S" = each.value.retry_settings.default.transfer_message },
         "wrong_action"     = { "S" = each.value.retry_settings.default.wrong_action }
       } } : {},
-      "timeout" = { "M" = {
+      "timeout" = local.retry_settings_timeout[each.key] ? { "M" = {
         "attempts"         = { "N" = tostring(each.value.retry_settings.timeout.attempts) },
         "retry_message"    = { "S" = each.value.retry_settings.timeout.retry_message },
         "transfer_message" = { "S" = each.value.retry_settings.timeout.transfer_message }
-      } }
+      } } : {}
     } }
   })) : (jsonencode({
     "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
