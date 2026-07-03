@@ -92,8 +92,8 @@ def config():
         'caller_number' : dyanmodb_data['Item']['caller_number']['S'],
         'type' : dyanmodb_data['Item']['type']['S'],
         'retry_settings' : {
-            'default' : get_menu_levels()[0]['default'],
-            'timeout' : get_menu_levels()[0]['timeout']
+            'default' : get_menu_levels()[0][0]['default'],
+            'timeout' : get_menu_levels()[0][1]['timeout']
         }
     }
     return test_case_data
