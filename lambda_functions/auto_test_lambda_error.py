@@ -7,52 +7,19 @@ connect = boto3.client('connect')
 table_name = 'bs-automated-testing-iac'
 key_name = 'flow_name-testing_option'
 pk_value = ''
+region = 'af-south-1'
+account_id = '687244881512'
+
+dynamodb = boto3.client('dynamodb')
+
+
 
 def config():
-    region = 'af-south-1'
-    account_id = '687244881512'
-
-    dynamodb = boto3.client('dynamodb')
-
+    
     dyanmodb_data = dynamodb.get_item(
-        TableName = table_name,
-        Key={key_name : {'S': pk_value}}
+    TableName = table_name,
+    Key={key_name : {'S': pk_value}}
     )
-    
-    def get_menu_levels():
-        menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
-        menu_levels = []
-
-        for menu_level in menu_levels_data:
-            menu_levels.append({
-            'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
-            'message' : menu_levels_data[menu_level]['M']['message']['S'],
-            'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
-            'next' : menu_levels_data[menu_level]['M']['next']['S']
-            })
-        return menu_levels
-    
-    def get_retry_levels():
-        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M']
-        retry_settings = {}
-        
-        default_retry_levels = {
-            "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
-            "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
-            "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
-            "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
-        }
-
-        timeout_retry_levels = {
-            "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
-            "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
-            "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
-        }
-
-        retry_settings.update({"default": default_retry_levels, "timeout": timeout_retry_levels})
-
-        return retry_settings
-    
     queue = connect.describe_queue(
         InstanceId = instance_id,
         QueueId = dyanmodb_data["Item"]['queue_id']['S']
@@ -61,6 +28,52 @@ def config():
         InstanceId = instance_id,
         HoursOfOperationId = dyanmodb_data['Item']['hoo_id']['S']
     )
+
+
+    def get_menu_levels():
+        menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
+        menu_levels = []
+        levels_data = [{"default":{}}, {"timeout":{}}]
+        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M'] if 'retry_settings' in dyanmodb_data['Item'] else {}
+
+        if 'retry_settings' not in dyanmodb_data['Item']:
+            for menu_level in menu_levels_data:
+                menu_levels.append({
+                'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
+                'message' : menu_levels_data[menu_level]['M']['message']['S'],
+                'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
+                'next' : menu_levels_data[menu_level]['M']['next']['S']
+                })
+        else:
+            for menu_level in menu_levels_data:
+                menu_levels.append({
+                'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
+                'message' : menu_levels_data[menu_level]['M']['message']['S'],
+                'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
+                'next' : menu_levels_data[menu_level]['M']['next']['S']
+                })
+
+                if menu_levels_data[menu_level]['M']['user_action']['S'] == "default":
+                    levels_data[0] = {
+                        "default" : {
+                            "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
+                            "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
+                            "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
+                            "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
+                }}
+                if menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
+                    levels_data[1] = {
+                        "timeout" : {
+                            "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
+                            "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
+                            "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
+                    }}
+                else:
+                    pass
+
+
+        return levels_data, menu_levels
+    
 
     test_case_data = {
         'instance_id' : instance_id,
@@ -73,17 +86,16 @@ def config():
         'hoo_results' : dyanmodb_data['Item']['hoo_result']['S'],
         'queue_id' : dyanmodb_data['Item']['queue_id']['S'],
         'welcome_text' : dyanmodb_data['Item']['welcome_text']['S'],
-        'menu_levels' : get_menu_levels(),
+        'menu_levels' : get_menu_levels()[1],
         'queue_display_name' : queue['Queue']['Name'],
         'hoo_display_name' : hoo['HoursOfOperation']['Name'],
         'caller_number' : dyanmodb_data['Item']['caller_number']['S'],
         'type' : dyanmodb_data['Item']['type']['S'],
         'retry_settings' : {
-            'default' : get_retry_levels()['default'],
-            'timeout' : get_retry_levels()['timeout']
+            'default' : get_menu_levels()[0][0]['default'],
+            'timeout' : get_menu_levels()[0][1]['timeout']
         }
     }
-
     return test_case_data
 
 
@@ -489,6 +501,7 @@ def build_test_case(config):
     return test_case
 
 def run():
+    print(config())
     test_case_list = connect.list_test_cases(
         InstanceId = instance_id,
         )

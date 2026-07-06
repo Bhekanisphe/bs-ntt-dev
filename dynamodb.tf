@@ -23,6 +23,12 @@ locals {
     for k, v in var.test_cases :
     k => try(v.retry_settings, null) != null
   }
+
+  retry_settings_default = {
+    for k, v in var.test_cases :
+    k => try(v.retry_settings.default, null) != null
+  }
+
 }
 
 resource "aws_dynamodb_table_item" "Test-Case-Items" {
@@ -48,19 +54,24 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
         "next"        = { "S" = value.next }
       }
     } } },
-    "retry_settings" = { "M" = {
-      "default" = { "M" = {
-        "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
-        "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
-        "transfer_message" = { "S" = each.value.retry_settings.default.transfer_message },
-        "wrong_action"     = { "S" = each.value.retry_settings.default.wrong_action }
-      } },
-      "timeout" = { "M" = {
+    "retry_settings" = { "M" = (
+      local.retry_settings_default[each.key] ? 
+      { 
+        "default" = { "M" = {
+          "attempts"         = { "N" = tostring(each.value.retry_settings.default.attempts) },
+          "retry_message"    = { "S" = each.value.retry_settings.default.retry_message },
+          "transfer_message" = { "S" = each.value.retry_settings.default.transfer_message },
+          "wrong_action"     = { "S" = each.value.retry_settings.default.wrong_action }
+      } } 
+      } :
+      {
+      "timeout" =  { "M" = {
         "attempts"         = { "N" = tostring(each.value.retry_settings.timeout.attempts) },
         "retry_message"    = { "S" = each.value.retry_settings.timeout.retry_message },
         "transfer_message" = { "S" = each.value.retry_settings.timeout.transfer_message }
-      } }
-    } }
+      } 
+      }
+    } )}
   })) : (jsonencode({
     "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
     "caller_number"            = { "S" = each.value.caller_number },
