@@ -279,7 +279,7 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
                 actor="System",
                 action_id=reaction_event_id,
                 event_props={
-                    "MatchingCriteria": {"Type": "Containsity"},
+                    "MatchingCriteria": {"Type": "Contains"},
                     "Text": transfer_message if is_last else retry_message
                 },
                 actions=[],
@@ -400,7 +400,7 @@ def build_test_case(config):
                     actor="System",
                     action_id=event_id,
                     event_props={
-                        "MatchingCriteria": {"Type": "Containsity"},
+                        "MatchingCriteria": {"Type": "Contains"},
                         "Text": level["message"]
                     },
                     actions=[user_action],
@@ -465,7 +465,7 @@ def build_test_case(config):
             actor="System",
             action_id=welcome_event_id,
             event_props={
-                "MatchingCriteria": {"Type": "Containsity"},
+                "MatchingCriteria": {"Type": "Contains"},
                 "Text": config["welcome_text"]
             },
             actions=[],
