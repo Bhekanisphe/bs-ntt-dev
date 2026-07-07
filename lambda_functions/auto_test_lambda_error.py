@@ -400,7 +400,7 @@ def build_test_case(config):
                     actor="System",
                     action_id=event_id,
                     event_props={
-                        "MatchingCriteria": {"Type": "Inclusion"},
+                        "MatchingCriteria": {"Type": "Similarity"},
                         "Text": level["message"]
                     },
                     actions=[user_action],
