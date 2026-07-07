@@ -70,13 +70,13 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press hash to repeat the menu options",
                     user_action = "1",
                     next = "Option 1.2"
                 },
                 "2" = {
                     identifier = "Option 1.2",
-                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu.",
+                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press hash to repeat or press * to return to the main menu.",
                     user_action = "2",
                     next = "Check queue"
                 }
@@ -120,13 +120,13 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press hash to repeat the menu options",
                     user_action = "1",
                     next = "Option 1.2"
                 },
                 "2" = {
                     identifier = "Option 1.2",
-                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu.",
+                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press hash to repeat or press * to return to the main menu.",
                     user_action = "default",
                     next = "Check queue"
                 }
@@ -153,13 +153,13 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press hash to repeat the menu options",
                     user_action = "1",
                     next = "Option 1.2"
                 },
                 "2" = {
                     identifier = "Option 1.2",
-                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu.",
+                    message = "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press hash to repeat or press * to return to the main menu.",
                     user_action = "timeout",
                     next = "Check queue"
                 }
@@ -185,7 +185,7 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press hash to repeat the menu options",
                     user_action = "default",
                     next = "Check queue"
                 }
@@ -212,7 +212,7 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options",
+                    message = "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press hash to repeat the menu options",
                     user_action = "timeout",
                     next = "Check queue"
                 }
