@@ -279,7 +279,7 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
                 actor="System",
                 action_id=reaction_event_id,
                 event_props={
-                    "MatchingCriteria": {"Type": "Inclusion"},
+                    "MatchingCriteria": {"Type": "Similarity"},
                     "Text": transfer_message if is_last else retry_message
                 },
                 actions=[],
