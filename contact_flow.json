@@ -897,7 +897,7 @@
       "Parameters": {
         "StoreInput": "False",
         "InputTimeLimitSeconds": "5",
-        "Text": "Welcome to the technical help menu options. Please press 1 for WiFi issues, press 2 for laptop issues. Press # to repeat or press * to return to the main menu."
+        "Text": "Welcome to the technical help menu options. Please press one for WiFi issues, press two for laptop issues. Press hash to repeat or press star to return to the main menu."
       },
       "Identifier": "577077dc-74fc-46e3-9648-062066aa139f",
       "Type": "GetParticipantInput",
@@ -961,7 +961,7 @@
       "Parameters": {
         "StoreInput": "False",
         "InputTimeLimitSeconds": "5",
-        "Text": "Please press one for technial issues. Press 2 for Sales. Press 3 for general queries. Press # to repeat the menu options"
+        "Text": "Please press one for technial issues. Press two for Sales. Press three for general queries. Press # to repeat the menu options"
       },
       "Identifier": "282120a1-ce17-42e9-9de5-6a9aa20cd0ec",
       "Type": "GetParticipantInput",
