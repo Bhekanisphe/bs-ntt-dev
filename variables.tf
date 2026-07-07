@@ -60,7 +60,7 @@ variable "test_cases" {
         "BM-Test-Flow-IaC:1" = {
             flow_name-testing_option = "BM-Test-Flow-IaC:Opt1.2",
             welcome_text = "Welcome to the test flow",
-            caller_number = "+1234567890",
+            caller_number = "+1234567891",
             description = "Test case for BM-Test-Flow-IaC",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
@@ -70,7 +70,7 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
+                    message = "Please press one for technical issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
                     user_action = "1",
                     next = "Option 1.2"
                 },
@@ -85,7 +85,7 @@ variable "test_cases" {
         "BM-Test-Flow-Voice-IaC:2" = {
             flow_name-testing_option = "BM-Test-Flow-Voice-IaC:Technical-Wifi",
             welcome_text = "Welcome to the voice test flow",
-            caller_number = "+1234567890",
+            caller_number = "+1234567891",
             description = "Test case for BM-Test-Flow-Voice-IaC",
             flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
@@ -110,7 +110,7 @@ variable "test_cases" {
         "BM-Test-Flow-IaC:3" = {
             flow_name-testing_option = "BM-Test-Flow-IaC:Opt1-Default",
             welcome_text = "Welcome to the test flow",
-            caller_number = "+1234567891",
+            caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC - default with retry settings",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
@@ -120,7 +120,7 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
+                    message = "Please press one for technical issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
                     user_action = "1",
                     next = "Option 1.2"
                 },
@@ -143,7 +143,7 @@ variable "test_cases" {
         "BM-Test-Flow-IaC:4" = {
             flow_name-testing_option = "BM-Test-Flow-IaC:Opt1-Timeout",
             welcome_text = "Welcome to the test flow",
-            caller_number = "+1234567891",
+            caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC - timeout with retry settings",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
@@ -153,7 +153,7 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
+                    message = "Please press one for technical issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
                     user_action = "1",
                     next = "Option 1.2"
                 },
@@ -175,7 +175,7 @@ variable "test_cases" {
         "BM-Test-Flow-IaC:5" = {
             flow_name-testing_option = "BM-Test-Flow-IaC:Main-default",
             welcome_text = "Welcome to the test flow",
-            caller_number = "+1234567894",
+            caller_number = "+1234567891",
             description = "Test case for BM-Test-Flow-IaC - main-default",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
@@ -185,7 +185,7 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
+                    message = "Please press one for technical issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
                     user_action = "default",
                     next = "Check queue"
                 }
@@ -202,7 +202,7 @@ variable "test_cases" {
         "BM-Test-Flow-IaC:6" = {
             flow_name-testing_option = "BM-Test-Flow-IaC:Main-timeout",
             welcome_text = "Welcome to the test flow",
-            caller_number = "+1234567891",
+            caller_number = "+1234567890",
             description = "Test case for BM-Test-Flow-IaC - main-timeout",
             flow_id = "f6525c49-27f0-40cd-a84c-89a3848d4463",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
@@ -212,7 +212,7 @@ variable "test_cases" {
             menu_levels = {
                 "1" = {
                     identifier = "Option 1",
-                    message = "Please press one for technial issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
+                    message = "Please press one for technical issues. Press two for Sales. Press three for general queries. Press hash to repeat the menu options",
                     user_action = "timeout",
                     next = "Check queue"
                 }
