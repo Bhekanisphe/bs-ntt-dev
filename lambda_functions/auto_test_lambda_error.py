@@ -529,7 +529,7 @@ def run():
         Tags={
         'Name': config()["flow_name"],
         'Description': config()["description"],
-        'Environment': 'Develpment'
+        'Environment': 'Development'
     }  
     )
     
@@ -549,7 +549,7 @@ def lambda_handler(event, context):
         partition_key = keys[key_name]
 
         pk_value = list(partition_key.values())[0]
-    run()
+        run()
     
     return {
         'statusCode': 200,
