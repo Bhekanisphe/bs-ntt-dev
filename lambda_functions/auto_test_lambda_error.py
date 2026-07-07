@@ -253,7 +253,7 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
                 actor="System",
                 action_id=prompt_event_id,
                 event_props={
-                    "MatchingCriteria": {"Type": "Inclusion"},
+                    "MatchingCriteria": {"Type": "Similarity"},
                     "Text": level["message"]
                 },
                 actions=actions_for_prompt,
