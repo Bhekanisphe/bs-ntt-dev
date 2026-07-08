@@ -6,3 +6,10 @@ terraformPipeline(
     workingDir: '',
     autoApply: true
 )
+
+pythonLambda(
+    sourceDir: 'lambda_functions',
+    requirements: 'requirements.txt',
+    requirementsDev: 'requirements-dev.txt',
+    coverageThreshold: 80
+)
