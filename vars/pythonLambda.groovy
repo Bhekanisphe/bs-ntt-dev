@@ -2,12 +2,7 @@ def call(Map config = [:]) {
     pipeline {
     agent any
 
-    options {
-        timestamps()
-        ansiColor('xterm')
-        disableConcurrentBuilds()
-        buildDiscarder(logRotator(numToKeepStr: '20'))
-    }
+
 
     environment {
         PYTHON_VERSION      = '3.12'
