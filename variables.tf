@@ -247,7 +247,7 @@ variable "test_cases" {
                 default = {
                     attempts         = 3,
                     retry_message    = "I didn't quite get that, please try again.",
-                    transfer_message = "I didn't quite get that, please try again.",
+                    transfer_message = "I didn't quite get that, please hold while I transfer you to an agent.",
                     wrong_action     = "0"
                 }
             }
