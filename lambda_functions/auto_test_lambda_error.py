@@ -5,7 +5,7 @@ import uuid
 import boto3
 
 INSTANCE_ID = "6e669f6f-3783-4c0e-ac76-4f531575015d"
-connect = boto3.client("connect")
+connects = boto3.client("connect")
 TABLE_NAME = "bs-automated-testing-iac"
 KEY_NAME = "flow_name-testing_option"
 REGION = "af-south-1"
