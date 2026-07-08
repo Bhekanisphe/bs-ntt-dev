@@ -240,21 +240,21 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
     entry_identifier is "Menu options 1" — what an earlier observation's
     NextObservations should point to.
     """
-    kind=level["user_action"]  # "default" or "timeout"
-    settings=config.get("retry_settings", {}).get(kind, {})
-    attempts=settings.get("attempts", 3)
-    retry_message=settings["retry_message"]
-    transfer_message=settings.get("transfer_message", retry_message)
-    wrong_action=settings.get("wrong_action", "0")
-    type_=config.get("type", "DtmfInput")
-    kind_label="Default" if kind == "default" else "Timeout"
+    kind = level["user_action"]  # "default" or "timeout"
+    settings = config.get("retry_settings", {}).get(kind, {})
+    attempts = settings.get("attempts", 3)
+    retry_message = settings["retry_message"]
+    transfer_message = settings.get("transfer_message", retry_message)
+    wrong_action = settings.get("wrong_action", "0")
+    type_ = config.get("type", "DtmfInput")
+    kind_label = "Default" if kind == "default" else "Timeout"
 
-    observations=[]
-    clusters=[]
-    x_step=300
+    observations = []
+    clusters = []
+    x_step = 300
 
-    prompt_names=[f"Menu options {i + 1}" for i in range(attempts)]
-    reaction_names=[
+    prompt_names = [f"Menu options {i + 1}" for i in range(attempts)]
+    reaction_names = [
         f"{kind_label} {i + 1}" + (" - Transfer" if i == attempts - 1 else "")
         for i in range(attempts)
     ]
@@ -298,7 +298,7 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
                 prompt_names[i],
                 prompt_cluster_action_ids,
                 {"x": cx, "y": y},
-                [None],# junction id patched below
+                [None],  # junction id patched below
             )
         )
 
