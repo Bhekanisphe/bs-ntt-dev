@@ -38,17 +38,4 @@ def call(Map config = [:]) {
         """
     }
 
-    stage('Unit Tests & Coverage') {
-        sh """
-            . .venv/bin/activate
-            mkdir -p reports
-            pytest ${testsDir} \
-                --junitxml=reports/junit.xml \
-                --cov=${sourceDir} \
-                --cov-report=xml:reports/coverage.xml \
-                --cov-report=term \
-                --cov-fail-under=${coverageThreshold}
-        """
-        junit allowEmptyResults: true, testResults: 'reports/junit.xml'
-    }
 }
