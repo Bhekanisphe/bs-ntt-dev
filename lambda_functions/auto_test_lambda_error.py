@@ -465,7 +465,7 @@ def build_test_case(config):
             actor="System",
             action_id=welcome_event_id,
             event_props={
-                "MatchingCriteria": {"Type": "Inclusion"},
+                "MatchingCriteria": {"Type": "Similarity"},
                 "Text": config["welcome_text"]
             },
             actions=[],
