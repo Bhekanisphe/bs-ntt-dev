@@ -6,7 +6,7 @@ def call(Map config = [:]) {
     def requirementsDev   = config.requirementsDev   ?: 'requirements-dev.txt'
     def coverageThreshold = config.coverageThreshold ?: 80
 
-    stage('Setup Python') {
+    stage('Python init') {
         sh """
             python${pythonVersion} -m venv .venv
             . .venv/bin/activate
@@ -18,7 +18,7 @@ def call(Map config = [:]) {
         """
     }
 
-    stage('Lint and Black') {
+    stage('Verify Python code') {
         sh """
             . .venv/bin/activate
             black ${sourceDir}
