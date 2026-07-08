@@ -41,11 +41,6 @@ resource "aws_iam_role_policy" "lambda_policy" {
       },
     ]
   })
-
-  tags = {
-    Environment = "development"
-    Application = "terraform"
-  }
 }
 
 # Package the Lambda function code
