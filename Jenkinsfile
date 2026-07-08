@@ -1,4 +1,4 @@
-@Library('terraformPipeline@master', 'pythonLambda@master') _
+@Library('terraformPipeline@master', 'pythonLambda') _
 
 terraformPipeline(
     region: 'af-south-1',
