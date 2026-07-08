@@ -91,4 +91,9 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
       }
     } } }
   }))
+
+  tags = {
+    Environment = "development"
+    Application = "terraform"
+  }
 }

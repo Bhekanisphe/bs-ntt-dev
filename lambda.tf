@@ -15,6 +15,11 @@ data "aws_iam_policy_document" "lambda_assume_role" {
 resource "aws_iam_role" "lambda_role" {
   name               = "lambda_execution_role"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
+
+  tags = {
+    Environment = "development"
+    Application = "terraform"
+  }
 }
 
 # Permissions Lambda needs to read DynamoDB stream + write logs
@@ -36,15 +41,14 @@ resource "aws_iam_role_policy" "lambda_policy" {
       },
     ]
   })
+
+  tags = {
+    Environment = "development"
+    Application = "terraform"
+  }
 }
 
 # Package the Lambda function code
-data "archive_file" "lambda_file" {
-  type        = "zip"
-  source_file = "${path.root}/lambda_functions/auto_test_lambda.py"
-  output_path = "${path.root}/lambda_functions/function.zip"
-}
-
 data "archive_file" "lambda_file_error_handling" {
   type        = "zip"
   source_file = "${path.root}/lambda_functions/auto_test_lambda_error.py"
@@ -76,5 +80,6 @@ resource "aws_lambda_event_source_mapping" "lambda_dynamodb_trigger_error_handli
 
   tags = {
     Name = "dynamodb-stream-mapping-error-handling"
+    Environment = "development"
   }
 }
