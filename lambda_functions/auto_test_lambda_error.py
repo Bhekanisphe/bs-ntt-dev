@@ -1,180 +1,212 @@
+"""importing json, boto3 and uuid libraries"""
+
 import json
-import boto3
 import uuid
+import boto3
 
-instance_id = '6e669f6f-3783-4c0e-ac76-4f531575015d'
-connect = boto3.client('connect')
-table_name = 'bs-automated-testing-iac'
-key_name = 'flow_name-testing_option'
-pk_value = ''
-region = 'af-south-1'
-account_id = '687244881512'
+INSTANCE_ID = "6e669f6f-3783-4c0e-ac76-4f531575015d"
+connect = boto3.client("connect")
+TABLE_NAME = "bs-automated-testing-iac"
+KEY_NAME = "flow_name-testing_option"
+REGION = "af-south-1"
+ACCOUNT_ID = "687244881512"
 
-dynamodb = boto3.client('dynamodb')
-
+dynamodb = boto3.client("dynamodb")
 
 
-def config():
-    
+def config(pk_value):
+    """get the configuration from the dynamodb table"""
     dyanmodb_data = dynamodb.get_item(
-    TableName = table_name,
-    Key={key_name : {'S': pk_value}}
+        TableName=TABLE_NAME, Key={KEY_NAME: {"S": pk_value}}
     )
     queue = connect.describe_queue(
-        InstanceId = instance_id,
-        QueueId = dyanmodb_data["Item"]['queue_id']['S']
+        InstanceId=INSTANCE_ID, QueueId=dyanmodb_data["Item"]["queue_id"]["S"]
     )
     hoo = connect.describe_hours_of_operation(
-        InstanceId = instance_id,
-        HoursOfOperationId = dyanmodb_data['Item']['hoo_id']['S']
+        InstanceId=INSTANCE_ID, HoursOfOperationId=dyanmodb_data["Item"]["hoo_id"]["S"]
     )
 
-
     def get_menu_levels():
-        menu_levels_data = dyanmodb_data['Item']['menu_levels']['M']
+        menu_levels_data = dyanmodb_data["Item"]["menu_levels"]["M"]
         menu_levels = []
-        levels_data = [{"default":{}}, {"timeout":{}}]
-        retry_levels_data = dyanmodb_data['Item']['retry_settings']['M'] if 'retry_settings' in dyanmodb_data['Item'] else {}
+        levels_data = [{"default": {}}, {"timeout": {}}]
+        retry_levels_data = (
+            dyanmodb_data["Item"]["retry_settings"]["M"]
+            if "retry_settings" in dyanmodb_data["Item"]
+            else {}
+        )
 
-        if 'retry_settings' not in dyanmodb_data['Item']:
+        if "retry_settings" not in dyanmodb_data["Item"]:
             for menu_level in menu_levels_data:
-                menu_levels.append({
-                'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
-                'message' : menu_levels_data[menu_level]['M']['message']['S'],
-                'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
-                'next' : menu_levels_data[menu_level]['M']['next']['S']
-                })
+                menu_levels.append(
+                    {
+                        "identifier": menu_levels_data[menu_level]["M"]["identifier"][
+                            "S"
+                        ],
+                        "message": menu_levels_data[menu_level]["M"]["message"]["S"],
+                        "user_action": menu_levels_data[menu_level]["M"]["user_action"][
+                            "S"
+                        ],
+                        "next": menu_levels_data[menu_level]["M"]["next"]["S"],
+                    }
+                )
         else:
             for menu_level in menu_levels_data:
-                menu_levels.append({
-                'identifier' : menu_levels_data[menu_level]['M']['identifier']['S'],
-                'message' : menu_levels_data[menu_level]['M']['message']['S'],
-                'user_action' : menu_levels_data[menu_level]['M']['user_action']['S'],
-                'next' : menu_levels_data[menu_level]['M']['next']['S']
-                })
+                menu_levels.append(
+                    {
+                        "identifier": menu_levels_data[menu_level]["M"]["identifier"][
+                            "S"
+                        ],
+                        "message": menu_levels_data[menu_level]["M"]["message"]["S"],
+                        "user_action": menu_levels_data[menu_level]["M"]["user_action"][
+                            "S"
+                        ],
+                        "next": menu_levels_data[menu_level]["M"]["next"]["S"],
+                    }
+                )
 
-                if menu_levels_data[menu_level]['M']['user_action']['S'] == "default":
+                if menu_levels_data[menu_level]["M"]["user_action"]["S"] == "default":
                     levels_data[0] = {
-                        "default" : {
-                            "attempts" : int(retry_levels_data['default']['M']['attempts']['N']),
-                            "wrong_action" : retry_levels_data['default']['M']['wrong_action']['S'],
-                            "retry_message" : retry_levels_data['default']['M']['retry_message']['S'],
-                            "transfer_message" : retry_levels_data['default']['M']['transfer_message']['S'],
-                }}
-                if menu_levels_data[menu_level]['M']['user_action']['S'] == "timeout":
+                        "default": {
+                            "attempts": int(
+                                retry_levels_data["default"]["M"]["attempts"]["N"]
+                            ),
+                            "wrong_action": retry_levels_data["default"]["M"][
+                                "wrong_action"
+                            ]["S"],
+                            "retry_message": retry_levels_data["default"]["M"][
+                                "retry_message"
+                            ]["S"],
+                            "transfer_message": retry_levels_data["default"]["M"][
+                                "transfer_message"
+                            ]["S"],
+                        }
+                    }
+                if menu_levels_data[menu_level]["M"]["user_action"]["S"] == "timeout":
                     levels_data[1] = {
-                        "timeout" : {
-                            "attempts" : int(retry_levels_data['timeout']['M']['attempts']['N']),
-                            "retry_message" : retry_levels_data['timeout']['M']['retry_message']['S'],
-                            "transfer_message" : retry_levels_data['timeout']['M']['transfer_message']['S'],
-                    }}
+                        "timeout": {
+                            "attempts": int(
+                                retry_levels_data["timeout"]["M"]["attempts"]["N"]
+                            ),
+                            "retry_message": retry_levels_data["timeout"]["M"][
+                                "retry_message"
+                            ]["S"],
+                            "transfer_message": retry_levels_data["timeout"]["M"][
+                                "transfer_message"
+                            ]["S"],
+                        }
+                    }
                 else:
                     pass
 
-
         return levels_data, menu_levels
-    
 
     test_case_data = {
-        'instance_id' : instance_id,
-        'region' : region,
-        'account_id' : account_id,
-        'flow_name' : dyanmodb_data['Item']['flow_name-testing_option']['S'],
-        'description' : dyanmodb_data['Item']['description']['S'],
-        'flow_id' : dyanmodb_data['Item']['flow_id']['S'],
-        'hoo_id' : dyanmodb_data['Item']['hoo_id']['S'],
-        'hoo_results' : dyanmodb_data['Item']['hoo_result']['S'],
-        'queue_id' : dyanmodb_data['Item']['queue_id']['S'],
-        'welcome_text' : dyanmodb_data['Item']['welcome_text']['S'],
-        'menu_levels' : get_menu_levels()[1],
-        'queue_display_name' : queue['Queue']['Name'],
-        'hoo_display_name' : hoo['HoursOfOperation']['Name'],
-        'caller_number' : dyanmodb_data['Item']['caller_number']['S'],
-        'type' : dyanmodb_data['Item']['type']['S'],
-        'retry_settings' : {
-            'default' : get_menu_levels()[0][0]['default'],
-            'timeout' : get_menu_levels()[0][1]['timeout']
-        }
+        "instance_id": INSTANCE_ID,
+        "region": REGION,
+        "account_id": ACCOUNT_ID,
+        "flow_name": dyanmodb_data["Item"]["flow_name-testing_option"]["S"],
+        "description": dyanmodb_data["Item"]["description"]["S"],
+        "flow_id": dyanmodb_data["Item"]["flow_id"]["S"],
+        "hoo_id": dyanmodb_data["Item"]["hoo_id"]["S"],
+        "hoo_results": dyanmodb_data["Item"]["hoo_result"]["S"],
+        "queue_id": dyanmodb_data["Item"]["queue_id"]["S"],
+        "welcome_text": dyanmodb_data["Item"]["welcome_text"]["S"],
+        "menu_levels": get_menu_levels()[1],
+        "queue_display_name": queue["Queue"]["Name"],
+        "hoo_display_name": hoo["HoursOfOperation"]["Name"],
+        "caller_number": dyanmodb_data["Item"]["caller_number"]["S"],
+        "type": dyanmodb_data["Item"]["type"]["S"],
+        "retry_settings": {
+            "default": get_menu_levels()[0][0]["default"],
+            "timeout": get_menu_levels()[0][1]["timeout"],
+        },
     }
     return test_case_data
 
 
 def generate_position(x, y):
+    """generates a position dictionary for the test case"""
     return {"x": x, "y": y}
 
 
 def generate_check_hoo_override(hoo_arn, hoo_display_name, result="InHour"):
+    """generates a check hoo override action for the test case"""
     action_id = str(uuid.uuid4())
-    return action_id, {
-        "Parameters": {
-            "ActionType": "OverrideSystemBehavior",
-            "Behavior": {
-                "Type": "FlowAction",
-                "Properties": {
-                    "ActionType": "CheckHoursOfOperation",
-                    "ActionParameters": {"HoursOfOperationId": hoo_arn},
-                    "Strategy": {
-                        "Type": "MockResponse",
-                        "Response": {
-                            "Type": "ExecutionResult",
-                            "ExecutionResult": {"Value": result}
-                        }
-                    }
-                }
-            }
+    return (
+        action_id,
+        {
+            "Parameters": {
+                "ActionType": "OverrideSystemBehavior",
+                "Behavior": {
+                    "Type": "FlowAction",
+                    "Properties": {
+                        "ActionType": "CheckHoursOfOperation",
+                        "ActionParameters": {"HoursOfOperationId": hoo_arn},
+                        "Strategy": {
+                            "Type": "MockResponse",
+                            "Response": {
+                                "Type": "ExecutionResult",
+                                "ExecutionResult": {"Value": result},
+                            },
+                        },
+                    },
+                },
+            },
+            "Identifier": action_id,
+            "Type": "OverrideSystemBehavior",
+            "Transitions": {},
         },
-        "Identifier": action_id,
-        "Type": "OverrideSystemBehavior",
-        "Transitions": {}
-    }, hoo_display_name
+        hoo_display_name,
+    )
 
 
 def generate_user_action(user_value, type_):
+    """generates a user action for the test case"""
     action_id = str(uuid.uuid4())
     return action_id, {
         "Parameters": {
             "Actor": "Customer",
-            "Instruction": {
-                "Type": type_,
-                "Properties": {"Value": user_value}
-            }
+            "Instruction": {"Type": type_, "Properties": {"Value": user_value}},
         },
         "Identifier": action_id,
         "Type": "SendInstruction",
-        "Transitions": {}
+        "Transitions": {},
     }
 
 
 def generate_disconnect_action():
+    """generates a disconnect action for the test case"""
     action_id = str(uuid.uuid4())
     return action_id, {
-        "Parameters": {
-            "ActionType": "TestControl",
-            "Command": {"Type": "EndTest"}
-        },
+        "Parameters": {"ActionType": "TestControl", "Command": {"Type": "EndTest"}},
         "Identifier": action_id,
         "Type": "TestControl",
-        "Transitions": {}
+        "Transitions": {},
     }
 
 
-def generate_observation(identifier, event_type, actor, action_id, event_props, actions, next_observations):
+def generate_observation(
+    identifier, event_type, actor, action_id, event_props, actions, next_observations
+):
+    """generates an observation for the test case"""
     return {
         "Identifier": identifier,
         "Event": {
             "Type": event_type,
             "Actor": actor,
             "Identifier": action_id,
-            "Properties": event_props
+            "Properties": event_props,
         },
         "Actions": actions,
-        "Transitions": {
-            "NextObservations": next_observations
-        } if next_observations else {}
+        "Transitions": (
+            {"NextObservations": next_observations} if next_observations else {}
+        ),
     }
 
 
 def generate_cluster(name, action_ids, position, junction, size=None):
+    """generates a cluster annotation for the test case"""
     return {
         "type": "cluster",
         "id": str(uuid.uuid4()),
@@ -188,8 +220,8 @@ def generate_cluster(name, action_ids, position, junction, size=None):
             "actionIds": action_ids,
             "style": "grid",
             "clusterJunction": junction,
-            "locked": True
-        }
+            "locked": True,
+        },
     }
 
 
@@ -228,7 +260,7 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
     ]
 
     for i in range(attempts):
-        is_last = (i == attempts - 1)
+        is_last = i == attempts - 1
         cx = x + i * x_step
 
         prompt_event_id = str(uuid.uuid4())
@@ -254,17 +286,21 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
                 action_id=prompt_event_id,
                 event_props={
                     "MatchingCriteria": {"Type": "Similarity"},
-                    "Text": level["message"]
+                    "Text": level["message"],
                 },
                 actions=actions_for_prompt,
-                next_observations=[reaction_names[i]]
+                next_observations=[reaction_names[i]],
             )
         )
 
-        clusters.append(generate_cluster(
-            prompt_names[i], prompt_cluster_action_ids,
-            {"x": cx, "y": y}, [None]  # junction id patched below
-        ))
+        clusters.append(
+            generate_cluster(
+                prompt_names[i],
+                prompt_cluster_action_ids,
+                {"x": cx, "y": y},
+                [None],  # junction id patched below
+            )
+        )
 
         reaction_event_id = str(uuid.uuid4())
         positions[reaction_event_id] = generate_position(cx, y + 344)
@@ -280,17 +316,21 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
                 action_id=reaction_event_id,
                 event_props={
                     "MatchingCriteria": {"Type": "Similarity"},
-                    "Text": transfer_message if is_last else retry_message
+                    "Text": transfer_message if is_last else retry_message,
                 },
                 actions=[],
-                next_observations=[next_id]
+                next_observations=[next_id],
             )
         )
 
-        clusters.append(generate_cluster(
-            reaction_names[i], [reaction_event_id],
-            {"x": cx, "y": y + 344}, [None]  # junction id patched below
-        ))
+        clusters.append(
+            generate_cluster(
+                reaction_names[i],
+                [reaction_event_id],
+                {"x": cx, "y": y + 344},
+                [None],  # junction id patched below
+            )
+        )
 
     # Wire clusterJunction (visual-only) to point at the NEXT cluster in
     # this block; the very last cluster's junction is left empty here and
@@ -303,18 +343,16 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
 
 
 def build_test_case(config):
-    region = config["region"]
-    account_id = config["account_id"]
-    instance_id = config["instance_id"]
+    """builds the test case based on the configuration"""
 
     def arn(resource_type, resource_id):
-        return f"arn:aws:connect:{region}:{account_id}:instance/{instance_id}/{resource_type}/{resource_id}"
+        return f"arn:aws:connect:{REGION}:{ACCOUNT_ID}:instance/{INSTANCE_ID}/{resource_type}/{resource_id}"
 
     init_event_id = str(uuid.uuid4())
     hoo_override_id, hoo_override_action, hoo_display = generate_check_hoo_override(
         arn("operating-hours", config["hoo_id"]),
         config["hoo_display_name"],
-        config.get("hoo_result", "InHour")
+        config.get("hoo_result", "InHour"),
     )
     welcome_event_id = str(uuid.uuid4())
     queue_event_id = str(uuid.uuid4())
@@ -329,9 +367,17 @@ def build_test_case(config):
         init_event_id: {"position": positions[init_event_id]},
         hoo_override_id: {
             "position": positions[hoo_override_id],
-            "parameters": {"Behavior": {"Properties": {"ActionParameters": {
-                "HoursOfOperationId": {"displayName": config["hoo_display_name"]}
-            }}}}
+            "parameters": {
+                "Behavior": {
+                    "Properties": {
+                        "ActionParameters": {
+                            "HoursOfOperationId": {
+                                "displayName": config["hoo_display_name"]
+                            }
+                        }
+                    }
+                }
+            },
         },
         welcome_event_id: {"position": positions[welcome_event_id]},
     }
@@ -342,16 +388,18 @@ def build_test_case(config):
 
     annotations = [
         generate_cluster(
-            "Interaction 1", [init_event_id, hoo_override_id],
-            {"x": 79, "y": 35}, [welcome_cluster["id"]]  # junction to the next cluster
+            "Interaction 1",
+            [init_event_id, hoo_override_id],
+            {"x": 79, "y": 35},
+            [welcome_cluster["id"]],  # junction to the next cluster
         ),
     ]
-    
+
     annotations.append(welcome_cluster)
 
     menu_observations = []
     x_start, y_start = 942.4, 76
-    x_step, y_step = 300, 400
+    y_step = 400
 
     # Precompute the real entry point for every level BEFORE generating any
     # observations, since a normal level's "next" may point at a level that
@@ -368,7 +416,9 @@ def build_test_case(config):
         return entry_id_for.get(target, target)
 
     first_menu_identifier = None
-    last_cluster = annotations[-1]  # will be re-pointed once we know the next block's first cluster
+    last_cluster = annotations[
+        -1
+    ]  # will be re-pointed once we know the next block's first cluster
 
     for i, level in enumerate(config["menu_levels"]):
         block_x = x_start + i * 100
@@ -376,8 +426,13 @@ def build_test_case(config):
 
         if level["user_action"] in ("default", "timeout"):
             obs, clusters, entry_id = build_retry_block(
-                level, config, positions, action_metadata, block_x, block_y,
-                resolve_next(level["next"])
+                level,
+                config,
+                positions,
+                action_metadata,
+                block_x,
+                block_y,
+                resolve_next(level["next"]),
             )
             menu_observations.extend(obs)
             last_cluster["clusterProfile"]["clusterJunction"] = [clusters[0]["id"]]
@@ -386,7 +441,9 @@ def build_test_case(config):
             level["_entry_identifier"] = entry_id
         else:
             event_id = str(uuid.uuid4())
-            user_id, user_action = generate_user_action(level["user_action"], config["type"])
+            user_id, user_action = generate_user_action(
+                level["user_action"], config["type"]
+            )
             event_pos = generate_position(block_x, block_y)
             positions[event_id] = event_pos
             positions[user_id] = generate_position(block_x + 224, block_y)
@@ -401,14 +458,17 @@ def build_test_case(config):
                     action_id=event_id,
                     event_props={
                         "MatchingCriteria": {"Type": "Similarity"},
-                        "Text": level["message"]
+                        "Text": level["message"],
                     },
                     actions=[user_action],
-                    next_observations=[resolve_next(level["next"])]
+                    next_observations=[resolve_next(level["next"])],
                 )
             )
             level_cluster = generate_cluster(
-                level["identifier"], [event_id, user_id], {"x": block_x, "y": block_y}, []
+                level["identifier"],
+                [event_id, user_id],
+                {"x": block_x, "y": block_y},
+                [],
             )
             last_cluster["clusterProfile"]["clusterJunction"] = [level_cluster["id"]]
             annotations.append(level_cluster)
@@ -419,14 +479,24 @@ def build_test_case(config):
             first_menu_identifier = level["_entry_identifier"]
 
     last_menu_next = resolve_next(config["menu_levels"][-1]["next"])
-    check_queue_pos = generate_position(x_start + len(config["menu_levels"]) * 400, y_start)
+    check_queue_pos = generate_position(
+        x_start + len(config["menu_levels"]) * 400, y_start
+    )
     positions[queue_event_id] = check_queue_pos
-    positions[disconnect_id] = generate_position(check_queue_pos["x"] + 224, check_queue_pos["y"])
+    positions[disconnect_id] = generate_position(
+        check_queue_pos["x"] + 224, check_queue_pos["y"]
+    )
     action_metadata[queue_event_id] = {
         "position": positions[queue_event_id],
-        "parameters": {"Event": {"Properties": {"ActionParameters": {
-            "QueueId": {"displayName": config["queue_display_name"]}
-        }}}}
+        "parameters": {
+            "Event": {
+                "Properties": {
+                    "ActionParameters": {
+                        "QueueId": {"displayName": config["queue_display_name"]}
+                    }
+                }
+            }
+        },
     }
     action_metadata[disconnect_id] = {"position": positions[disconnect_id]}
 
@@ -437,10 +507,10 @@ def build_test_case(config):
         action_id=queue_event_id,
         event_props={
             "ActionType": "TransferContactToQueue",
-            "ActionParameters": {"QueueId": arn("queue", config["queue_id"])}
+            "ActionParameters": {"QueueId": arn("queue", config["queue_id"])},
         },
         actions=[disconnect_action],
-        next_observations=None
+        next_observations=None,
     )
     check_queue_cluster = generate_cluster(
         last_menu_next, [queue_event_id, disconnect_id], check_queue_pos, []
@@ -448,7 +518,7 @@ def build_test_case(config):
     last_cluster["clusterProfile"]["clusterJunction"] = [check_queue_cluster["id"]]
     annotations.append(check_queue_cluster)
 
-    welcome_cluster_target = None
+    # welcome_cluster_target = None
     observations = [
         generate_observation(
             identifier="Interaction 1",
@@ -457,7 +527,7 @@ def build_test_case(config):
             action_id=init_event_id,
             event_props={},
             actions=[hoo_override_action],
-            next_observations=["Welcome message"]
+            next_observations=["Welcome message"],
         ),
         generate_observation(
             identifier="Welcome message",
@@ -466,13 +536,13 @@ def build_test_case(config):
             action_id=welcome_event_id,
             event_props={
                 "MatchingCriteria": {"Type": "Similarity"},
-                "Text": config["welcome_text"]
+                "Text": config["welcome_text"],
             },
             actions=[],
-            next_observations=[first_menu_identifier]
+            next_observations=[first_menu_identifier],
         ),
         *menu_observations,
-        check_queue_obs
+        check_queue_obs,
     ]
 
     test_case = {
@@ -484,7 +554,7 @@ def build_test_case(config):
             "StartAction": "",
             "name": config["flow_name"],
             "description": config["description"],
-            "initializationData": "{\"Attributes\":{}}",
+            "initializationData": '{"Attributes":{}}',
             "entryPoint": {
                 "ChatEntryPointParameters": None,
                 "Type": "VOICE_CALL",
@@ -492,66 +562,62 @@ def build_test_case(config):
                     "DestinationPhoneNumber": None,
                     "FlowId": config["flow_id"],
                     "SourcePhoneNumber": None,
-                    "TranscriptionLanguageCodes": None
-                }
-            }
+                    "TranscriptionLanguageCodes": None,
+                },
+            },
         },
-        "Observations": observations
+        "Observations": observations,
     }
     return test_case
 
-def run():
-    print(config())
-    test_case_list = connect.list_test_cases(
-        InstanceId = instance_id,
-        )
-    for test_case in test_case_list["TestCaseSummaryList"]:
-        if test_case["Name"] == config()["flow_name"]:
-            connect.delete_test_case(
-                InstanceId = instance_id,
-                TestCaseId = test_case["Id"]
-            )
 
+def run(pk_value):
+    """runs the test case"""
+    cfg = config(pk_value)
+    print(cfg)
+    test_case_list = connect.list_test_cases(
+        InstanceId=INSTANCE_ID,
+    )
+    for test_case in test_case_list["TestCaseSummaryList"]:
+        if test_case["Name"] == cfg["flow_name"]:
+            connect.delete_test_case(InstanceId=INSTANCE_ID, TestCaseId=test_case["Id"])
 
     test_case = connect.create_test_case(
-        InstanceId = instance_id,
-        Name = config()["flow_name"],
-        Description = config()["description"],
-        Content =json.dumps(build_test_case(config())),
-        EntryPoint = {
-        'Type': 'VOICE_CALL',
-        'VoiceCallEntryPointParameters': {
-            'SourcePhoneNumber': config()['caller_number'],
-            'FlowId': config()["flow_id"]
+        InstanceId=INSTANCE_ID,
+        Name=cfg["flow_name"],
+        Description=cfg["description"],
+        Content=json.dumps(build_test_case(cfg)),
+        EntryPoint={
+            "Type": "VOICE_CALL",
+            "VoiceCallEntryPointParameters": {
+                "SourcePhoneNumber": cfg["caller_number"],
+                "FlowId": cfg["flow_id"],
+            },
         },
-        
-    }, 
         Tags={
-        'Name': config()["flow_name"],
-        'Description': config()["description"],
-        'Environment': 'Develpment'
-    }  
+            "Name": cfg["flow_name"],
+            "Description": cfg["description"],
+            "Environment": "Development",
+        },
     )
-    
+
     execute_test = connect.start_test_case_execution(
-        InstanceId = instance_id,
-        TestCaseId = test_case["TestCaseId"]
+        InstanceId=INSTANCE_ID, TestCaseId=test_case["TestCaseId"]
     )
 
     return execute_test["Status"]
 
 
 def lambda_handler(event, context):
-    for record in event['Records']:
-        keys = record['dynamodb']['Keys']
-        
-        global pk_value
-        partition_key = keys[key_name]
-
+    """Handler for the Lambda function"""
+    for record in event["Records"]:
+        keys = record["dynamodb"]["Keys"]
+        partition_key = keys[KEY_NAME]
         pk_value = list(partition_key.values())[0]
-    run()
-    
+        run(pk_value)
+
     return {
-        'statusCode': 200,
-        'body': config()
+        "statusCode": 200,
+        "function_name": context.function_name,
+        "body": config(pk_value),
     }

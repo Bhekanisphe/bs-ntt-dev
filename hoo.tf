@@ -20,6 +20,7 @@ resource "aws_connect_hours_of_operation" "BM-Test-HOO" {
   }
 
   tags = {
-    "Name" = "BM Test flow Hours of Operation"
+    "Name" = "BM Test flow Hours of Operation",
+    "Environment" = "development"
   }
 }

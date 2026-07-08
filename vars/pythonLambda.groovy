@@ -1,0 +1,36 @@
+def call(Map config = [:]) {
+    def pythonVersion     = config.pythonVersion     ?: '3.14'
+    def sourceDir         = config.sourceDir         ?: 'lambda_functions'
+    def testsDir          = config.testsDir          ?: 'tests'
+    def requirements      = config.requirements      ?: 'requirements.txt'
+    def requirementsDev   = config.requirementsDev   ?: 'requirements-dev.txt'
+    def coverageThreshold = config.coverageThreshold ?: 80
+
+    stage('Python init') {
+        sh """
+            python${pythonVersion} -m venv .venv
+            . .venv/bin/activate
+            pip install --upgrade pip
+            if [ -f ${requirements} ]; then pip install -r ${requirements}; fi
+            if [ -f ${requirementsDev} ]; then pip install -r ${requirementsDev}; fi
+            pip install --quiet black flake8 mypy pytest pytest-cov
+            pip install boto3-stubs[essential]
+        """
+    }
+
+    stage('Verify Python code') {
+        sh """
+            . .venv/bin/activate
+            black ${sourceDir}
+            flake8 ${sourceDir} --max-line-length=120
+        """
+    }
+
+    stage('Type Check') {
+        sh """
+            . .venv/bin/activate
+            mypy ${sourceDir}
+        """
+    }
+
+}

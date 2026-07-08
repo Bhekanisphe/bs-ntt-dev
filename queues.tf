@@ -6,6 +6,7 @@ resource "aws_connect_queue" "Technical_Wifi" {
 
   tags = {
     "Name" = "Technical Wifi Queue",
+    "Environment" = "development"
   }
 }
 
@@ -17,6 +18,7 @@ resource "aws_connect_queue" "Technical_Laptop" {
 
   tags = {
     "Name" = "Technical Laptop Queue",
+    "Environment" = "development"
   }
 }
 
@@ -28,6 +30,7 @@ resource "aws_connect_queue" "BM-Test-General" {
 
   tags = {
     "Name" = "General queries Queue",
+    "Environment" = "development"
   }
 }
 
@@ -39,6 +42,7 @@ resource "aws_connect_queue" "BM-Test-Sales" {
 
   tags = {
     "Name" = "Sales queries Queue",
+    "Environment" = "development"
   }
 }
 
@@ -50,5 +54,6 @@ resource "aws_connect_queue" "BM-Test-Technical" {
 
   tags = {
     "Name" = "Technical queries Queue",
+    "Environment" = "development"
   }
 }

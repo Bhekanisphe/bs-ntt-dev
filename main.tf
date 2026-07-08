@@ -7,7 +7,7 @@ resource "aws_connect_contact_flow" "BM-Test-Flow-IaC" {
   content_hash = filebase64sha256("contact_flow.json")
   tags = {
     "Name"        = "BM-Test-IaC-Flow",
-    "Application" = "Terraform",
+    "Environment" = "Development",
     "Method"      = "Create"
   }
 }
@@ -21,7 +21,7 @@ resource "aws_connect_contact_flow" "BM-Test-Flow-Voice-IaC" {
   content_hash = filebase64sha256("contact_flow_voice.json")
   tags = {
     "Name"        = "BM-Test-Voice-IaC-Flow",
-    "Application" = "Terraform",
+    "Environment" = "Development",
     "Method"      = "Create"
   }
 }
