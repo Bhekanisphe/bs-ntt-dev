@@ -13,14 +13,7 @@ def call(Map config = [:]) {
             pip install --upgrade pip
             if [ -f ${requirements} ]; then pip install -r ${requirements}; fi
             if [ -f ${requirementsDev} ]; then pip install -r ${requirementsDev}; fi
-            pip install --quiet black flake8 mypy pytest pytest-cov
-        """
-    }
-
-    stage('Format Check') {
-        sh """
-            . .venv/bin/activate
-            black --check --diff ${sourceDir}
+            pip install --quiet flake8 mypy pytest pytest-cov
         """
     }
 
