@@ -3,13 +3,6 @@
 pipeline {
     agent any
 
-    options {
-        timestamps()
-        ansiColor('xterm')
-        disableConcurrentBuilds()
-        buildDiscarder(logRotator(numToKeepStr: '20'))
-    }
-
     environment {
         AWS_DEFAULT_REGION = 'af-south-1'
         TF_IN_AUTOMATION   = 'true'
