@@ -1,5 +1,5 @@
 def call(Map config = [:]) {
-    def pythonVersion     = config.pythonVersion     ?: '3.14.4'
+    def pythonVersion     = config.pythonVersion     ?: '3.14'
     def sourceDir         = config.sourceDir         ?: 'lambda_functions'
     def testsDir          = config.testsDir          ?: 'tests'
     def requirements      = config.requirements      ?: 'requirements.txt'
