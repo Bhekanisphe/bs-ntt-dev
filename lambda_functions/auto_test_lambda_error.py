@@ -40,52 +40,52 @@ def config(pk_value):
             for menu_level in menu_levels_data:
                 menu_levels.append(
                     {
-                        "identifier":menu_levels_data[menu_level]["M"]["identifier"][
+                        "identifier": menu_levels_data[menu_level]["M"]["identifier"][
                             "S"
                         ],
-                        "message":menu_levels_data[menu_level]["M"]["message"]["S"],
-                        "user_action":menu_levels_data[menu_level]["M"]["user_action"][
+                        "message": menu_levels_data[menu_level]["M"]["message"]["S"],
+                        "user_action": menu_levels_data[menu_level]["M"]["user_action"][
                             "S"
                         ],
-                        "next":menu_levels_data[menu_level]["M"]["next"]["S"],
+                        "next": menu_levels_data[menu_level]["M"]["next"]["S"],
                     }
                 )
         else:
             for menu_level in menu_levels_data:
                 menu_levels.append(
                     {
-                        "identifier":menu_levels_data[menu_level]["M"]["identifier"][
+                        "identifier": menu_levels_data[menu_level]["M"]["identifier"][
                             "S"
                         ],
-                        "message":menu_levels_data[menu_level]["M"]["message"]["S"],
+                        "message": menu_levels_data[menu_level]["M"]["message"]["S"],
                         "user_action": menu_levels_data[menu_level]["M"]["user_action"][
                             "S"
                         ],
-                        "next":menu_levels_data[menu_level]["M"]["next"]["S"],
+                        "next": menu_levels_data[menu_level]["M"]["next"]["S"],
                     }
                 )
 
                 if menu_levels_data[menu_level]["M"]["user_action"]["S"] == "default":
                     levels_data[0] = {
-                        "default":{
+                        "default": {
                             "attempts": int(
                                 retry_levels_data["default"]["M"]["attempts"]["N"]
                             ),
-                            "wrong_action":retry_levels_data["default"]["M"][
+                            "wrong_action": retry_levels_data["default"]["M"][
                                 "wrong_action"
                             ]["S"],
-                            "retry_message":retry_levels_data["default"]["M"][
+                            "retry_message": retry_levels_data["default"]["M"][
                                 "retry_message"
                             ]["S"],
-                            "transfer_message":retry_levels_data["default"]["M"][
+                            "transfer_message": retry_levels_data["default"]["M"][
                                 "transfer_message"
                             ]["S"],
                         }
                     }
                 if menu_levels_data[menu_level]["M"]["user_action"]["S"] == "timeout":
-                    levels_data[1] ={
-                        "timeout":{
-                            "attempts":int(
+                    levels_data[1] = {
+                        "timeout": {
+                            "attempts": int(
                                 retry_levels_data["timeout"]["M"]["attempts"]["N"]
                             ),
                             "retry_message": retry_levels_data["timeout"]["M"][
@@ -102,24 +102,24 @@ def config(pk_value):
         return levels_data, menu_levels
 
     test_case_data = {
-        "instance_id":INSTANCE_ID,
-        "region":REGION,
-        "account_id":ACCOUNT_ID,
-        "flow_name":dyanmodb_data["Item"]["flow_name-testing_option"]["S"],
-        "description":dyanmodb_data["Item"]["description"]["S"],
-        "flow_id":dyanmodb_data["Item"]["flow_id"]["S"],
-        "hoo_id":dyanmodb_data["Item"]["hoo_id"]["S"],
-        "hoo_results":dyanmodb_data["Item"]["hoo_result"]["S"],
-        "queue_id":dyanmodb_data["Item"]["queue_id"]["S"],
-        "welcome_text":dyanmodb_data["Item"]["welcome_text"]["S"],
-        "menu_levels":get_menu_levels()[1],
-        "queue_display_name":queue["Queue"]["Name"],
-        "hoo_display_name":hoo["HoursOfOperation"]["Name"],
-        "caller_number":dyanmodb_data["Item"]["caller_number"]["S"],
-        "type":dyanmodb_data["Item"]["type"]["S"],
+        "instance_id": INSTANCE_ID,
+        "region": REGION,
+        "account_id": ACCOUNT_ID,
+        "flow_name": dyanmodb_data["Item"]["flow_name-testing_option"]["S"],
+        "description": dyanmodb_data["Item"]["description"]["S"],
+        "flow_id": dyanmodb_data["Item"]["flow_id"]["S"],
+        "hoo_id": dyanmodb_data["Item"]["hoo_id"]["S"],
+        "hoo_results": dyanmodb_data["Item"]["hoo_result"]["S"],
+        "queue_id": dyanmodb_data["Item"]["queue_id"]["S"],
+        "welcome_text": dyanmodb_data["Item"]["welcome_text"]["S"],
+        "menu_levels": get_menu_levels()[1],
+        "queue_display_name": queue["Queue"]["Name"],
+        "hoo_display_name": hoo["HoursOfOperation"]["Name"],
+        "caller_number": dyanmodb_data["Item"]["caller_number"]["S"],
+        "type": dyanmodb_data["Item"]["type"]["S"],
         "retry_settings": {
-            "default":get_menu_levels()[0][0]["default"],
-            "timeout":get_menu_levels()[0][1]["timeout"],
+            "default": get_menu_levels()[0][0]["default"],
+            "timeout": get_menu_levels()[0][1]["timeout"],
         },
     }
     return test_case_data
@@ -204,6 +204,7 @@ def generate_observation(
         ),
     }
 
+
 def generate_cluster(name, action_ids, position, junction, size=None):
     """generates a cluster annotation for the test case"""
     return {
@@ -223,6 +224,7 @@ def generate_cluster(name, action_ids, position, junction, size=None):
         },
     }
 
+
 def build_retry_block(level, config, positions, action_metadata, x, y, next_target):
     """
     Builds the repeated "wrong input" / "timeout" loop for one menu level.
@@ -238,21 +240,21 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
     entry_identifier is "Menu options 1" — what an earlier observation's
     NextObservations should point to.
     """
-    kind = level["user_action"]  # "default" or "timeout"
-    settings = config.get("retry_settings", {}).get(kind, {})
-    attempts = settings.get("attempts", 3)
-    retry_message = settings["retry_message"]
-    transfer_message = settings.get("transfer_message", retry_message)
-    wrong_action = settings.get("wrong_action", "0")
-    type_ = config.get("type", "DtmfInput")
-    kind_label = "Default" if kind == "default" else "Timeout"
+    kind=level["user_action"]  # "default" or "timeout"
+    settings=config.get("retry_settings", {}).get(kind, {})
+    attempts=settings.get("attempts", 3)
+    retry_message=settings["retry_message"]
+    transfer_message=settings.get("transfer_message", retry_message)
+    wrong_action=settings.get("wrong_action", "0")
+    type_=config.get("type", "DtmfInput")
+    kind_label="Default" if kind == "default" else "Timeout"
 
-    observations = []
-    clusters = []
-    x_step = 300
+    observations=[]
+    clusters=[]
+    x_step=300
 
-    prompt_names = [f"Menu options {i + 1}" for i in range(attempts)]
-    reaction_names = [
+    prompt_names=[f"Menu options {i + 1}" for i in range(attempts)]
+    reaction_names=[
         f"{kind_label} {i + 1}" + (" - Transfer" if i == attempts - 1 else "")
         for i in range(attempts)
     ]
@@ -296,7 +298,7 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
                 prompt_names[i],
                 prompt_cluster_action_ids,
                 {"x": cx, "y": y},
-                [None],  # junction id patched below
+                [None],# junction id patched below
             )
         )
 
@@ -338,6 +340,7 @@ def build_retry_block(level, config, positions, action_metadata, x, y, next_targ
     clusters[-1]["clusterProfile"]["clusterJunction"] = []
 
     return observations, clusters, prompt_names[0]
+
 
 def build_test_case(config):
     """builds the test case based on the configuration"""
@@ -396,7 +399,7 @@ def build_test_case(config):
 
     menu_observations = []
     x_start, y_start = 942.4, 76
-    y_step =  400
+    y_step = 400
 
     # Precompute the real entry point for every level BEFORE generating any
     # observations, since a normal level's "next" may point at a level that
@@ -515,7 +518,7 @@ def build_test_case(config):
     last_cluster["clusterProfile"]["clusterJunction"] = [check_queue_cluster["id"]]
     annotations.append(check_queue_cluster)
 
-    #welcome_cluster_target = None
+    # welcome_cluster_target = None
     observations = [
         generate_observation(
             identifier="Interaction 1",
@@ -566,6 +569,7 @@ def build_test_case(config):
         "Observations": observations,
     }
     return test_case
+
 
 def run(pk_value):
     """runs the test case"""
