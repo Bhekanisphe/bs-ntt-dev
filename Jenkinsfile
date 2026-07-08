@@ -44,10 +44,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Pipeline completed successfully.'
+            echo 'Pipeline completed successfully.'
         }
         failure {
-            echo '❌ Pipeline failed — see stage logs above.'
+            echo 'Pipeline failed — see stage logs above.'
         }
         always {
             cleanWs()
