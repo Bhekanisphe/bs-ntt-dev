@@ -14,13 +14,14 @@ def call(Map config = [:]) {
             if [ -f ${requirements} ]; then pip install -r ${requirements}; fi
             if [ -f ${requirementsDev} ]; then pip install -r ${requirementsDev}; fi
             pip install --quiet black flake8 mypy pytest pytest-cov
-            pip install "boto3-stubs[essential]"
+            pip install boto3-stubs[essential]
         """
     }
 
-    stage('Lint') {
+    stage('Lint and Black') {
         sh """
             . .venv/bin/activate
+            black ${sourceDir}
             flake8 ${sourceDir} --max-line-length=120
         """
     }
