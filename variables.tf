@@ -225,5 +225,32 @@ variable "test_cases" {
                 }
             }
         }
+        "BM-Test-Voice-IaC:7" = {
+            flow_name-testing_option = "BM-Test-Voice-IaC:Main-default",
+            welcome_text = "Welcome to the voice test flow",
+            caller_number = "+1234567892",
+            description = "Test case for BM-Test-Voice-IaC - main-default",
+            flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
+            hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
+            hoo_result = "InHour",
+            queue_id = "73e9d156-a62d-4471-9cbb-af126df78a1d",
+            type = "Utterance",
+            menu_levels = {
+                "1" = {
+                    identifier = "Utterance 1",
+                    message = "Please let us know the purpose of your call. You can do this by saying what you need assistance with in a clear voice",
+                    user_action = "default",
+                    next = "Check queue"
+                }
+            },
+            retry_settings = {
+                default = {
+                    attempts         = 3,
+                    retry_message    = "I didn't quite get that, please try again.",
+                    transfer_message = "I didn't quite get that, please try again.",
+                    wrong_action     = "0"
+                }
+            }
+        }
     }
 }
