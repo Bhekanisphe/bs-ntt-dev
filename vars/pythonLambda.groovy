@@ -13,7 +13,8 @@ def call(Map config = [:]) {
             pip install --upgrade pip
             if [ -f ${requirements} ]; then pip install -r ${requirements}; fi
             if [ -f ${requirementsDev} ]; then pip install -r ${requirementsDev}; fi
-            pip install --quiet flake8 mypy pytest pytest-cov
+            pip install --quiet black flake8 mypy pytest pytest-cov
+            pip install "boto3-stubs[essential]"
         """
     }
 
