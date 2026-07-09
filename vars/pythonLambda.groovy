@@ -1,10 +1,8 @@
 def call(Map config = [:]) {
     def pythonVersion     = config.pythonVersion     ?: '3.14'
     def sourceDir         = config.sourceDir         ?: 'lambda_functions'
-    def testsDir          = config.testsDir          ?: 'tests'
     def requirements      = config.requirements      ?: 'requirements.txt'
     def requirementsDev   = config.requirementsDev   ?: 'requirements-dev.txt'
-    def coverageThreshold = config.coverageThreshold ?: 80
 
     stage('Python init') {
         sh """

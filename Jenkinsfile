@@ -21,8 +21,7 @@ pipeline {
                     pythonLambda(
                         sourceDir:         'lambda_functions',
                         requirements:      'requirements.txt',
-                        requirementsDev:   'requirements-dev.txt',
-                        coverageThreshold: 80
+                        requirementsDev:   'requirements-dev.txt'
                     )
                 }
             }
