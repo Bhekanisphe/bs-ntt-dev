@@ -1,10 +1,8 @@
 def call(Map config = [:]) {
     def pythonVersion     = config.pythonVersion     ?: '3.14'
     def sourceDir         = config.sourceDir         ?: 'lambda_functions'
-    def testsDir          = config.testsDir          ?: 'tests'
     def requirements      = config.requirements      ?: 'requirements.txt'
     def requirementsDev   = config.requirementsDev   ?: 'requirements-dev.txt'
-    def coverageThreshold = config.coverageThreshold ?: 80
 
     stage('Python init') {
         sh """
@@ -15,6 +13,13 @@ def call(Map config = [:]) {
             if [ -f ${requirementsDev} ]; then pip install -r ${requirementsDev}; fi
             pip install --quiet black flake8 mypy pytest pytest-cov
             pip install boto3-stubs[essential]
+        """
+    }
+
+    stage('Format Check') {
+        sh """
+            . .venv/bin/activate
+            black --check --diff ${sourceDir}
         """
     }
 
