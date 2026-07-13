@@ -19,6 +19,10 @@ def call(Map config = [:]) {
                 """
             }
 
+            stage('Terraform Validate') {
+                sh 'terraform validate'
+            }
+
             stage('Terraform Plan') {
                 sh 'terraform plan -out=tfplan'
             }
