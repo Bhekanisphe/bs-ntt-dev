@@ -16,6 +16,13 @@ def call(Map config = [:]) {
         """
     }
 
+    stage('Format Check') {
+        sh """
+            . .venv/bin/activate
+            black --check --diff ${sourceDir}
+        """
+    }
+
     stage('Verify Python code') {
         sh """
             . .venv/bin/activate
