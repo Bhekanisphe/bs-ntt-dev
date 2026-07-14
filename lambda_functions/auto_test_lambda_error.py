@@ -3,6 +3,14 @@
 import json
 import uuid
 import boto3
+import os
+
+TABLE_NAME = os.environ["TABLE_NAME"]
+KEY_NAME = os.environ["KEY_NAME"]
+INSTANCE_ID = os.environ["INSTANCE_ID"]
+REGION = os.environ["REGION"]
+ACCOUNT_ID = os.environ["ACCOUNT_ID"]
+
 
 connect = boto3.client("connect")
 
