@@ -23,6 +23,18 @@ variable "hash_key" {
     default = "flow_name-testing_option"
 }
 
+variable "region" {
+    type = string
+    description = "The AWS region name"
+    default = "af-south-1"
+}
+
+variable "account_id" {
+    type = string
+    description = "The AWS account ID"
+    default = "687244881512"
+}
+
 variable "test_cases" {
     type = map(object({
     flow_name-testing_option = string

@@ -60,6 +60,16 @@ resource "aws_lambda_function" "bs-automated-testing_error_handling" {
   runtime = "python3.13"
   timeout = 300
 
+  environment {
+    variables = {
+      TABLE_NAME = aws_dynamodb_table.BS-Automated-Testing-Table.name
+      INSTANCE_ID = var.instance_id
+      KEY_NAME = var.hash_key
+      REGION = var.region
+      ACCOUNT_ID = var.account_id
+    }
+  }
+
   tags = {
     Environment = "development"
     Application = "terraform"

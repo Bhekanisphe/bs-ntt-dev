@@ -52,3 +52,13 @@ VPC, EC2 and ELB:
         VPC are regional
         fault tolrance -: Create multiple subnets each within a different AZ and launch EC2 instances running you app accross these subnets
         Keypairs are used to connect securely to EC2 instances. A key pair consist of a public key that AWS stores, and a private key file that youstore. For Linux the private key file allows you to connect securely SSH into your intance
+
+IaC and PaaS:
+    Elastic beanstalk config files (.ebextensions) can be added to your web apps source code
+    USed to customize env and resources
+    Config files are YAML or JSON formatted docs with a .config file extension
+    They should be placed in the .ebextension folder in the app source code bundle 
+    The option_settings section of the config file defines the values for the config options
+    The Resources section lets you further customise the resources in your apps env
+    SSL/TLS certs can be assigned to the env ELB (Can use ACM)
+    The connections between clients and load balancer are secured
