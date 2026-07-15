@@ -1,10 +1,15 @@
 resource "aws_dynamodb_table" "BS-Automated-Testing-Table" {
   name         = "bs-automated-testing-iac"
   billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "flow_name-testing_option"
+  hash_key     = "flow-name"
+  range_key = "testing-option"
     // Only primary key is required for a DynamoDB table, but you can add additional attributes if needed
     attribute {
-        name = "flow_name-testing_option"
+        name = "flow-name"
+        type = "S"
+    }
+    attribute {
+        name = "testing-option"
         type = "S"
     }
   # Enable stream — sends change events to Lambda
@@ -35,9 +40,11 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
   for_each   = var.test_cases
   table_name = aws_dynamodb_table.BS-Automated-Testing-Table.name
   hash_key   = var.hash_key
+  range_key  = var.range_key
 
   item = local.test_case_flags[each.key] ? (jsonencode({
-    "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
+    "flow-name" = { "S" = each.value["flow-name"] },
+    "testing-option" = { "S" = each.value["testing-option"] },
     "caller_number"            = { "S" = each.value.caller_number },
     "description"              = { "S" = each.value.description },
     "flow_id"                  = { "S" = each.value.flow_id },
@@ -73,7 +80,8 @@ resource "aws_dynamodb_table_item" "Test-Case-Items" {
       }
     } )}
   })) : (jsonencode({
-    "flow_name-testing_option" = { "S" = each.value.flow_name-testing_option },
+    "flow-name" = { "S" = each.value["flow-name"] },
+    "testing-option" = { "S" = each.value["testing-option"] },
     "caller_number"            = { "S" = each.value.caller_number },
     "description"              = { "S" = each.value.description },
     "flow_id"                  = { "S" = each.value.flow_id },

@@ -67,6 +67,7 @@ resource "aws_lambda_function" "bs-automated-testing_error_handling" {
       KEY_NAME = var.hash_key
       REGION = var.region
       ACCOUNT_ID = var.account_id
+      SORT_KEY = var.range_key
     }
   }
 

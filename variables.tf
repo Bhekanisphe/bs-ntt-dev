@@ -23,6 +23,12 @@ variable "hash_key" {
     default = "flow_name-testing_option"
 }
 
+variable "range_key" {
+    type = string
+    description = "The range key for the DynamoDB table"
+    default = "testing-option"
+}
+
 variable "region" {
     type = string
     description = "The AWS region name"
@@ -37,7 +43,8 @@ variable "account_id" {
 
 variable "test_cases" {
     type = map(object({
-    flow_name-testing_option = string
+    flow-name = string
+    testing-option = string
     caller_number= string
     description = string
     flow_id = string
@@ -70,7 +77,8 @@ variable "test_cases" {
     description = "List of test cases for the DynamoDB table"
     default = {
         "BM-Test-Flow-IaC:1" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:Opt1.2",
+            flow-name = "BM-Test-Flow-IaC",
+            testing-option = "1.2",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Flow-IaC",
@@ -95,7 +103,8 @@ variable "test_cases" {
             }
         },
         "BM-Test-Flow-Voice-IaC:2" = {
-            flow_name-testing_option = "BM-Test-Flow-Voice-IaC:Technical-Wifi",
+            flow-name = "BM-Test-Flow-Voice-IaC",
+            testing-option = "Technical-Wifi",
             welcome_text = "Welcome to the voice test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Flow-Voice-IaC",
@@ -120,7 +129,8 @@ variable "test_cases" {
             }
         },
         "BM-Test-Flow-IaC:3" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:Opt1-Default",
+            flow-name = "BM-Test-Flow-IaC",
+            testing-option = "1-default",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Flow-IaC - default with retry settings",
@@ -153,7 +163,8 @@ variable "test_cases" {
             }
         }
         "BM-Test-Flow-IaC:4" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:Opt1-Timeout",
+            flow-name = "BM-Test-Flow-IaC",
+            testing-option = "1-Timeout",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Flow-IaC - timeout with retry settings",
@@ -185,7 +196,8 @@ variable "test_cases" {
             }
         }
         "BM-Test-Flow-IaC:5" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:Main-default",
+            flow-name = "BM-Test-Flow-IaC",
+            testing-option = "main-default",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Flow-IaC - main-default",
@@ -212,7 +224,8 @@ variable "test_cases" {
             }
         }
         "BM-Test-Flow-IaC:6" = {
-            flow_name-testing_option = "BM-Test-Flow-IaC:Main-timeout",
+            flow-name = "BM-Test-Flow-IaC",
+            testing-option = "main-timeout",
             welcome_text = "Welcome to the test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Flow-IaC - main-timeout",
@@ -238,7 +251,8 @@ variable "test_cases" {
             }
         }
         "BM-Test-Voice-IaC:7" = {
-            flow_name-testing_option = "BM-Test-Voice-IaC:Main-default",
+            flow-name = "BM-Test-Voice-IaC",
+            testing-option = "main-default",
             welcome_text = "Welcome to the voice test flow",
             caller_number = "+1234567892",
             description = "Test case for BM-Test-Voice-IaC - main-default",

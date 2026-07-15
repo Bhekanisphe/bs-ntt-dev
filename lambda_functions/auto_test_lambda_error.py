@@ -7,6 +7,7 @@ import os
 
 TABLE_NAME = os.environ["TABLE_NAME"]
 KEY_NAME = os.environ["KEY_NAME"]
+SORT_KEY = os.environ["SORT_KEY"]
 INSTANCE_ID = os.environ["INSTANCE_ID"]
 REGION = os.environ["REGION"]
 ACCOUNT_ID = os.environ["ACCOUNT_ID"]
@@ -108,7 +109,7 @@ def config(pk_value):
         "instance_id": INSTANCE_ID,
         "region": REGION,
         "account_id": ACCOUNT_ID,
-        "flow_name": dyanmodb_data["Item"]["flow_name-testing_option"]["S"],
+        "flow_name": dyanmodb_data["Item"]["flow-name"]["S"] + ":" + dyanmodb_data["Item"]["testing-option"]["S"],
         "description": dyanmodb_data["Item"]["description"]["S"],
         "flow_id": dyanmodb_data["Item"]["flow_id"]["S"],
         "hoo_id": dyanmodb_data["Item"]["hoo_id"]["S"],
