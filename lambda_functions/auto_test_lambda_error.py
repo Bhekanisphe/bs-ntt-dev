@@ -576,9 +576,9 @@ def build_test_case(config):
     return test_case
 
 
-def run(pk_value):
+def run(pk_value, sort_key):
     """runs the test case"""
-    cfg = config(pk_value)
+    cfg = config(pk_value, sort_key)
     print(cfg)
     test_case_list = connect.list_test_cases(
         InstanceId=INSTANCE_ID,
