@@ -258,7 +258,7 @@ variable "test_cases" {
             description = "Test case for BM-Test-Voice-IaC - main-default",
             flow_id = "a37b12da-3217-4e34-ac9a-20bee93059de",
             hoo_id = "4605e369-8882-44d8-a3e9-069bb7fb7120",
-            hoo_result = "InHour",
+            hoo_result = "OutOfHour",
             queue_id = "a3ddb3e2-2b7d-4561-9336-749cfa14f910",
             type = "Utterance",
             menu_levels = {

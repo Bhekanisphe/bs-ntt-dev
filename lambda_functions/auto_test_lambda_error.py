@@ -358,7 +358,7 @@ def build_test_case(config):
     hoo_override_id, hoo_override_action, hoo_display = generate_check_hoo_override(
         arn("operating-hours", config["hoo_id"]),
         config["hoo_display_name"],
-        config.get("hoo_result", "InHour"),
+        config["hoo_result"],
     )
     welcome_event_id = str(uuid.uuid4())
     queue_event_id = str(uuid.uuid4())
