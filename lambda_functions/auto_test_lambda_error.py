@@ -581,9 +581,7 @@ def run(pk_value, sort_key):
     """runs the test case"""
     cfg = config(pk_value, sort_key)
     print(cfg)
-    test_case_list = connect.list_test_cases(
-        InstanceId=INSTANCE_ID,
-    )
+
     paginator = connect.get_paginator("list_test_cases")
     for page in paginator.paginate(InstanceId=INSTANCE_ID):
         for test_case in page["TestCaseSummaryList"]:
