@@ -588,7 +588,9 @@ def run(pk_value, sort_key):
     for page in paginator.paginate(InstanceId=INSTANCE_ID):
         for test_case in page["TestCaseSummaryList"]:
             if test_case["Name"] == cfg["flow_name"]:
-                connect.delete_test_case(InstanceId=INSTANCE_ID, TestCaseId=test_case["Id"])
+                connect.delete_test_case(
+                    InstanceId=INSTANCE_ID, TestCaseId=test_case["Id"]
+                    )
                 break 
 
     test_case = connect.create_test_case(
