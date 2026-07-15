@@ -18,10 +18,10 @@ connect = boto3.client("connect")
 dynamodb = boto3.client("dynamodb")
 
 
-def config(pk_value):
+def config(pk_value, sort_key):
     """get the configuration from the dynamodb table"""
     dyanmodb_data = dynamodb.get_item(
-        TableName=TABLE_NAME, Key={KEY_NAME: {"S": pk_value}}
+        TableName=TABLE_NAME, Key={KEY_NAME: {"S": pk_value}, SORT_KEY: {"S": sort_key}}
     )
     queue = connect.describe_queue(
         InstanceId=INSTANCE_ID, QueueId=dyanmodb_data["Item"]["queue_id"]["S"]
@@ -618,11 +618,12 @@ def lambda_handler(event, context):
     for record in event["Records"]:
         keys = record["dynamodb"]["Keys"]
         partition_key = keys[KEY_NAME]
+        sort_key = keys[SORT_KEY]
         pk_value = list(partition_key.values())[0]
-        run(pk_value)
+        run(pk_value, sort_key)
 
     return {
         "statusCode": 200,
         "function_name": context.function_name,
-        "body": config(pk_value),
+        "body": config(pk_value, sort_key),
     }
