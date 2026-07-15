@@ -21,7 +21,7 @@ dynamodb = boto3.client("dynamodb")
 def config(pk_value, sort_key):
     """get the configuration from the dynamodb table"""
     dyanmodb_data = dynamodb.get_item(
-        TableName=TABLE_NAME, Key={KEY_NAME: pk_value, SORT_KEY: sort_key}
+        TableName=TABLE_NAME, Key={KEY_NAME: {"S": pk_value}, SORT_KEY: {"S": sort_key}}
     )
     queue = connect.describe_queue(
         InstanceId=INSTANCE_ID, QueueId=dyanmodb_data["Item"]["queue_id"]["S"]
