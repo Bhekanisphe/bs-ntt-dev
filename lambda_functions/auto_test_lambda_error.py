@@ -591,8 +591,7 @@ def run(pk_value, sort_key):
                 connect.delete_test_case(
                     InstanceId=INSTANCE_ID, TestCaseId=test_case["Id"]
                     )
-                    
-                break 
+                    break 
 
     test_case = connect.create_test_case(
         InstanceId=INSTANCE_ID,
