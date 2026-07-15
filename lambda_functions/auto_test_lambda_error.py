@@ -115,7 +115,7 @@ def config(pk_value, sort_key):
         "description": dyanmodb_data["Item"]["description"]["S"],
         "flow_id": dyanmodb_data["Item"]["flow_id"]["S"],
         "hoo_id": dyanmodb_data["Item"]["hoo_id"]["S"],
-        "hoo_results": dyanmodb_data["Item"]["hoo_result"]["S"],
+        "hoo_result": dyanmodb_data["Item"]["hoo_result"]["S"],
         "queue_id": dyanmodb_data["Item"]["queue_id"]["S"],
         "welcome_text": dyanmodb_data["Item"]["welcome_text"]["S"],
         "menu_levels": get_menu_levels()[1],
