@@ -110,6 +110,7 @@ def config(pk_value, sort_key):
         "region": REGION,
         "account_id": ACCOUNT_ID,
         "flow_name": dyanmodb_data["Item"]["flow-name"]["S"]
+        + ":"
         + dyanmodb_data["Item"]["testing-option"]["S"],
         "description": dyanmodb_data["Item"]["description"]["S"],
         "flow_id": dyanmodb_data["Item"]["flow_id"]["S"],
