@@ -20,7 +20,7 @@ variable "table_name" {
 variable "hash_key" {
     type = string
     description = "The hash key for the DynamoDB table"
-    default = "flow_name-testing_option"
+    default = "flow-name"
 }
 
 variable "range_key" {
