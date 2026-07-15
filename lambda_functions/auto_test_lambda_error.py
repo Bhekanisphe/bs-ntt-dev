@@ -618,8 +618,9 @@ def lambda_handler(event, context):
     for record in event["Records"]:
         keys = record["dynamodb"]["Keys"]
         partition_key = keys[KEY_NAME]
-        sort_key = keys[SORT_KEY]
+        sort_key_attr = keys[SORT_KEY]
         pk_value = list(partition_key.values())[0]
+        sort_key = list(sort_key_attr.values())[0]
         run(pk_value, sort_key)
 
     return {
