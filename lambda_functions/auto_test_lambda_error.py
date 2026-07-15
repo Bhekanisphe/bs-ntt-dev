@@ -584,9 +584,12 @@ def run(pk_value, sort_key):
     test_case_list = connect.list_test_cases(
         InstanceId=INSTANCE_ID,
     )
-    for test_case in test_case_list["TestCaseSummaryList"]:
-        if test_case["Name"] == cfg["flow_name"]:
-            connect.delete_test_case(InstanceId=INSTANCE_ID, TestCaseId=test_case["Id"])
+    paginator = connect.get_paginator("list_test_cases")
+    for page in paginator.paginate(InstanceId=INSTANCE_ID):
+        for test_case in page["TestCaseSummaryList"]:
+            if test_case["Name"] == cfg["flow_name"]:
+                connect.delete_test_case(InstanceId=INSTANCE_ID, TestCaseId=test_case["Id"])
+                break 
 
     test_case = connect.create_test_case(
         InstanceId=INSTANCE_ID,
